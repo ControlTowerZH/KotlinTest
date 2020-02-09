@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category_name_voa">
+        <item>@string/category_all</item>
+        <item>@string/category_usa</item>
+        <item>@string/category_world</item>
+        <item>@string/category_life</item>
+        <item>@string/category_entertainment</item>
+        <item>@string/category_health</item>
+
+        <item>@string/category_education</item>
+        <item>@string/category_commerce</item>
+        <item>@string/category_science_technology</item>
+        <item>@string/category_history</item>
+        <item>@string/category_word_story</item>
+    </string-array>
+
+    <integer-array name="category_code_voa">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </integer-array>
+</resources>

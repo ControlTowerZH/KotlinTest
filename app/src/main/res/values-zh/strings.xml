@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">KotlinTest</string>
+    <string name="headline_view_count_info">%1$s</string><!-- 人浏览-->
+    <string name="headline_type_all">全部</string>
+    <string name="headline_type_hot_news">头条</string>
+    <string name="headline_type_audio">音频</string>
+    <string name="headline_type_video">视频</string>
+    <string name="headline_type_voa">VOA慢速英语</string>
+    <string name="headline_type_csvoa">VOA常速英语</string>
+    <string name="headline_type_bbc">BBC英语</string>
+    <string name="headline_type_song">听歌学英语</string>
+    <string name="headline_type_news">英语头条</string>
+    <string name="headline_type_voavideo">VOA视频</string>
+    <string name="headline_type_meiyu">美语怎么说</string>
+    <string name="headline_type_ted">TED演讲</string>
+    <string name="headline_type_bbcwordvideo">BBC新闻词汇</string>
+    <string name="headline_type_bbcvideo">BBC视频</string>
+    <string name="headline_type_topvideos">视频头条</string>
+    <string name="headline_type_japanvideos">日语视频</string>
+    <string name="headline_type_word">单词</string>
+    <string name="headline_type_question">问答</string>
+    <string name="headline_type_class">微课</string>
+    <string name="headline_news_literal">头条</string>
+    <string name="headline_song_literal">听歌</string>
+
+
+    <string name="category_usa">美国</string>
+    <string name="category_africa">非洲</string>
+    <string name="category_asia">亚洲</string>
+    <string name="category_middle_east">中东</string>
+    <string name="category_europe">欧洲</string>
+    <string name="category_science_technology">科技</string>
+    <string name="category_entertainment">娱乐</string>
+    <string name="category_economics">经济</string>
+    <string name="category_healthy">健康</string>
+    <string name="category_world">世界</string>
+    <string name="category_life">生活</string>
+    <string name="category_education">教育</string>
+    <string name="category_business">商业</string>
+    <string name="category_history">历史</string>
+    <string name="category_word_story">单词故事</string>
+
+    <string name="category_all">全部</string>
+    <string name="category_america">美洲</string>
+    <string name="category_health">健康</string>
+    <string name="category_commerce">商业</string>
+    <string name="category_economy" >经济</string>
+    <string name="category_mideast" >中东</string>
+    <string name="category_entertain">娱乐</string>
+
+</resources>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="8dp"
+    android:background="@drawable/bg_shadow_big"
+    android:orientation="horizontal"
+    android:paddingEnd="5dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_headlines"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            tools:src="@color/yellow"/>
+    </androidx.cardview.widget.CardView>
+
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="14dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_headlines_title_cn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="5dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/headline_item_small_title_color"
+            android:textSize="14sp"
+            tools:text="唐纳德•特朗普总统就职演说最新内容可以学习" />
+
+        <TextView
+            android:id="@+id/tv_time_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_headlines_title_cn"
+            android:text="2019-03-30"
+            android:textColor="@color/default_font_gray"
+            android:textSize="12sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|bottom"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="13dp"
+                    android:layout_height="12dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_login_eye_off" />
+
+                <TextView
+                    android:id="@+id/tv_view_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:drawablePadding="5dp"
+                    android:maxLines="1"
+                    android:textColor="@color/default_font_gray"
+                    android:textSize="12sp"
+                    tools:text="@string/headline_view_count_info" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/text_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|bottom"
+                android:ellipsize="end"
+                android:gravity="bottom"
+                android:maxLines="1"
+                android:textColor="@color/default_font_gray"
+                android:textSize="12sp"
+                android:visibility="gone"
+                tools:text="VOA视频-美国" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|bottom"
+                android:text="2019-03-30"
+                android:textColor="@color/default_font_gray"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <FrameLayout
+                android:id="@+id/frame_collect_container"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end|bottom"
+                android:layout_marginEnd="50dp">
+
+                <ImageView
+                    android:id="@+id/iv_headlines_collect"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_collect_on"
+                    android:visibility="visible" />
+                <!--headline_collect_not-->
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_download_container"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end|bottom"
+                android:layout_marginEnd="5dp">
+
+
+                <ImageView
+                    android:id="@+id/iv_headline_download_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    android:padding="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_my_download"
+                    android:visibility="visible" />
+                <!--headline_download_not_started-->
+               <!-- <com.iyuba.widget.pw.ProgressWheel
+                    android:id="@+id/progress_wheel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="0dp"
+                    android:visibility="invisible"
+                    app:pw_barColor="#14e715"
+                    app:pw_barLength="5dp"
+                    app:pw_barWidth="2dp"
+                    app:pw_circleColor="@android:color/white"
+                    app:pw_contourColor="@android:color/white"
+                    app:pw_rimColor="#dcdcdc"
+                    app:pw_rimWidth="2dp"
+                    app:pw_text="0%"
+                    app:pw_textColor="#dcdcdc"
+                    app:pw_textSize="9sp"
+                    tools:pw_text="23%" />-->
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
