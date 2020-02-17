@@ -20,7 +20,7 @@ import static com.haohao.kotlintest.CommonConstant.CATEGORY_VOA_VIDEO;
 
 
 public class ExtraDataHelper {
-    public static Fragment buildExtraFragment(String[] typeNamns, int[] typeCodes) {
+    public static Fragment buildExtraFragment(String[] typeNames, int[] typeCodes) {
         String type = "";
         switch (CATEGORY_VOA_SPECIAL){//InfoHelper.getInstance().getCategory()
             case CATEGORY_VOA_SPECIAL:
@@ -55,7 +55,7 @@ public class ExtraDataHelper {
         String[] types1 = new String[]{
                 type
         };
-        Bundle bundle = ViewPagerFragment.Companion.buildArguments(15, HolderType.SMALL, types1,typeNamns,typeCodes);
+        Bundle bundle = ViewPagerFragment.Companion.buildArguments(15, HolderType.SMALL, types1,typeNames,typeCodes);
         return ViewPagerFragment.Companion.newInstance(bundle);
     }
 }

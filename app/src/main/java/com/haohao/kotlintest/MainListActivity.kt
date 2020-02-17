@@ -40,9 +40,13 @@ class MainListActivity : AppCompatActivity() {
         val fragment = fm.findFragmentByTag("ExtraDataHelper")
         if (isFirst) {
             if (fragment != null) transaction.remove(fragment)//hide
-            mExtraFragment = ExtraDataHelper.buildExtraFragment(mCategoryDataHelper.names, mCategoryDataHelper.codes)
-            transaction.add(R.id.frame_container, mExtraFragment, "ExtraDataHelper")
-            transaction.show(mExtraFragment)
+            var names =  resources.getStringArray(R.array.category_name_voa)
+            var codes =  resources.getIntArray(R.array.category_code_voa)
+
+            mExtraFragment = ExtraDataHelper.buildExtraFragment(names, codes)
+            val fragment0 = ExtraDataHelper.buildExtraFragment(names, codes)
+            transaction.add(R.id.frame_container, fragment0, "ExtraDataHelper")
+            transaction.show(fragment0)
             transaction.commit()
         }
     }

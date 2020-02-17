@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.ViewPagerFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/fl_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@+id/tab_layout"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="-0.5dp"/>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/white"
+            app:tabMode="scrollable"
+            app:tabTextColor="@color/white"
+            android:background="@color/colorPrimary"/>
+
+
+
+    </RelativeLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@id/fl_tab_layout"
+        tools:background="@color/orange">
 
-</FrameLayout>
+    </androidx.viewpager.widget.ViewPager>
+</RelativeLayout>
