@@ -19,6 +19,5 @@ class KtolinApplication : Application(){
             Timber.plant(Timber.DebugTree())
         }
         InfoHelper.init(applicationContext)
-
     }
 }

@@ -2,17 +2,17 @@ package com.haohao.kotlintest
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.haohao.kotlintest.CommonConstant.*
+import com.haohao.kotlintest.help.ExtraDataHelper
 import com.haohao.kotlintest.help.InfoHelper
 import com.haohao.kotlintest.util.HeadlineType
 import kotlinx.android.synthetic.main.activity_main_list.*
 import kotlinx.android.synthetic.main.headline_partial_drop_down_expanded.view.*
 import kotlinx.android.synthetic.main.partial_drop_down_header.*
 import kotlinx.android.synthetic.main.partial_drop_down_header.view.*
-import java.security.AccessController.getContext
 import java.util.*
 
 class MainListActivity : AppCompatActivity() {
@@ -24,10 +24,27 @@ class MainListActivity : AppCompatActivity() {
     private var pageCount: Int = 0
     private var pageCountForAll: Int = 0
     private var pageCountForSingle: Int = 0
+    private var mExtraFragment: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_list)
+    }
+
+
+    private fun setFragment(isFirst: Boolean) {
+        //个人中心写入类型
+        //PersonalManager.getInstance().categoryType = AccountManager.getInstance().getHeadlineType()
+        val fm = supportFragmentManager
+        val transaction = fm.beginTransaction()
+        val fragment = fm.findFragmentByTag("ExtraDataHelper")
+        if (isFirst) {
+            if (fragment != null) transaction.remove(fragment)//hide
+            mExtraFragment = ExtraDataHelper.buildExtraFragment(mCategoryDataHelper.names, mCategoryDataHelper.codes)
+            transaction.add(R.id.frame_container, mExtraFragment, "ExtraDataHelper")
+            transaction.show(mExtraFragment)
+            transaction.commit()
+        }
     }
 
     private fun setUpDropDown(isShow: Boolean) {
@@ -81,18 +98,18 @@ class MainListActivity : AppCompatActivity() {
             val infoHelper = InfoHelper.getInstance()
             //如果切换了就一顿操作
             //String category = TypeUtils.headlineTypeToSpInfoType(type);
-            val category = TypeUtil.INSTANCE.headlineTypeToSpInfoType(type)
+            val category = "voa_special"//TypeUtil.INSTANCE.headlineTypeToSpInfoType(type)
             infoHelper.putCategory(category)
 
-            val categoryName = infoHelper.getCategoryName(getContext())
-            mTvCategoryName.setText(categoryName)
+            val categoryName = getString(R.string.headline_type_voa)//infoHelper.getCategoryName(getContext())
+            tv_category_name.text=categoryName
 
-            mCategory = category
+            //mCategory = category
             //EventBus.getDefault().post(ChangeCategoryEvent(categoryName))
 
-            val menuObjects = buildCategoryMenuObjects()
-            mCategoryDataHelper.names = resources.getStringArray(R.array.category_name_voa)
-            mCategoryDataHelper.codes = resources.getIntArray(R.array.category_code_voa)
+            //val menuObjects = buildCategoryMenuObjects()
+            //mCategoryDataHelper.names = resources.getStringArray(R.array.category_name_voa)
+            //mCategoryDataHelper.codes = resources.getIntArray(R.array.category_code_voa)
 
             setFragment(false)
         }
