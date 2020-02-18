@@ -36,10 +36,35 @@ class NewsListFragment : Fragment() {
 
     }
 
+    private var types: MutableList<String>? = null
+    private var typeStr: String? = null
+    private var holderType: Int = 0
+    private var pageCount: Int = 0
+    private var mCategoryCode: Int = 0
+
+    private var mCurrentPage = 1
+    private var lastId = "0"
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val bundle = arguments
+        if (bundle != null) {
+            pageCount = bundle.getInt(PAGE_COUNT_KEY)
+            holderType = bundle.getInt(HOLDER_TYPE_KEY)
+            val argsTypes = bundle.getStringArray(TYPES_KEY)
+            mCategoryCode = bundle.getInt(CATEGORY_TYPE_KEY)
+            assert(argsTypes != null)
+            for (type in argsTypes!!){
+                types!!.add(type)
+            }
+            typeStr = "voa"//TitleUtil.buildTypeStr(types)
+        }
+    }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_news_list, container, false)
     }
 
