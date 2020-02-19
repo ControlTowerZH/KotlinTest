@@ -48,4 +48,8 @@
     <string name="category_mideast" >中东</string>
     <string name="category_entertain">娱乐</string>
 
+
+    <string name="headline_no_data">暂无数据</string>
+    <string name="headline_all_data_load">数据加载完毕</string>
+    <string name="headline_loading_failed">数据加载失败,请检查网络是否连接</string>
 </resources>
