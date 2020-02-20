@@ -1,17 +1,25 @@
 package com.haohao.kotlintest.fragment
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.haohao.kotlintest.R
-
+import com.haohao.kotlintest.data.model.Headline
+import com.holybible.widget.recycler.EndlessListRecyclerView
+import kotlinx.android.synthetic.main.fragment_news_list.*
+import timber.log.Timber
 /**
- *
+ * 具体列表Fragment  核心
  */
-class NewsListFragment : Fragment() {
+class NewsListFragment : Fragment(),NewsListMvpView{
+
 
     companion object {
         private val PAGE_COUNT_KEY = "page_count"
@@ -44,7 +52,8 @@ class NewsListFragment : Fragment() {
 
     private var mCurrentPage = 1
     private var lastId = "0"
-
+    private var mAdapter:NewsListAdapter?=null
+    private var mPresenter:NewsListPresenter?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,13 +64,19 @@ class NewsListFragment : Fragment() {
             val argsTypes = bundle.getStringArray(TYPES_KEY)
             mCategoryCode = bundle.getInt(CATEGORY_TYPE_KEY)
             assert(argsTypes != null)
+            types= mutableListOf()
             for (type in argsTypes!!){
-                types!!.add(type)
+                types?.add(type)
             }
             typeStr = "voa"//TitleUtil.buildTypeStr(types)
         }
-    }
 
+
+        if (mAdapter == null) {
+            mAdapter = NewsListAdapter(context!!)
+        }
+        mPresenter = NewsListPresenter()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -69,4 +84,58 @@ class NewsListFragment : Fragment() {
     }
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mPresenter!!.attachView(this)
+
+        swipeRefreshLayout.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW)
+        swipeRefreshLayout.setOnRefreshListener(mRefreshListener)
+
+        recyclerView.setOnEndlessListener(mEndlessListener)
+        recyclerView.endless=(false)
+        recyclerView.adapter=mAdapter
+
+        initData(mCategoryCode)
+
+    }
+
+    private fun initData(categoryCode: Int){
+        mPresenter!!.getLatest(categoryCode, pageCount, recyclerView.endless, context)
+    }
+
+    private val mRefreshListener = SwipeRefreshLayout.OnRefreshListener {
+        mPresenter!!.getLatest(mCategoryCode, pageCount, recyclerView.endless, context)
+    }
+
+    private val mEndlessListener = EndlessListRecyclerView.OnEndlessListener {
+        Timber.d("TitleFragment====OnEndlessListener")
+        mPresenter!!.loadMore(mCategoryCode, mCurrentPage + 1, pageCount, context)
+    }
+
+
+    override fun setRecyclerEndless(isEndless: Boolean) {
+        recyclerView.endless = isEndless
+    }
+
+    override fun showMessage(resId: Int) {
+        Toast.makeText(context, resId, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onLatestLoaded(data: MutableList<Headline>?) {
+        mAdapter!!.setItems(data!!)
+        mCurrentPage = 1
+    }
+
+    override fun onMoreLoaded(data: MutableList<Headline>?, page: Int) {
+        mAdapter!!.addItems(data!!)
+        mCurrentPage = page
+        Timber.d("TitleFragment加载更多！")
+    }
+
+
+    override fun setSwipe(isRefreshing: Boolean) {
+        swipeRefreshLayout.isRefreshing = isRefreshing
+    }
+
 }
+

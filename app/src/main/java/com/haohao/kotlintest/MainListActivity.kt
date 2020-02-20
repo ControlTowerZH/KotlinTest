@@ -29,7 +29,16 @@ class MainListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_list)
+
     }
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        setFragment(true)
+        setUpDropDown(false)
+    }
+
+
 
 
     private fun setFragment(isFirst: Boolean) {
@@ -58,7 +67,7 @@ class MainListActivity : AppCompatActivity() {
                R.layout.headline_partial_drop_down_expanded, null, false)
 
 
-        ll_center.isSoundEffectsEnabled = false
+        collapsedView.ll_center!!.isSoundEffectsEnabled = false
 
         //image_search.setOnClickListener(searchListener)//搜索点击
         var mDropDownRecyclerView = expandedView.recycler
@@ -68,7 +77,7 @@ class MainListActivity : AppCompatActivity() {
         mDropDownAdapter?.setDelegate(mViewActions)
 
         //collapsedView.tv_category_name.setText(InfoHelper.getInstance().getCategoryName(baseContext))
-        collapsedView.tv_category_name.setText("VOA VOA")
+        collapsedView.tv_category_name.text=("VOA VOA")
         val category:String = InfoHelper.getInstance().getCategory().toString()
         if (category != CATEGORY_VOA_SPECIAL) {
             setFirstPosition(category)

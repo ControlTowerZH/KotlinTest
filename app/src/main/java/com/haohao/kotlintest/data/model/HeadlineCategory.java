@@ -86,7 +86,7 @@ public class HeadlineCategory {
     @SerializedName("ReadCount")
     public String ReadCount;
 
-    public String Source;
+    public String Source="voa";
 
     public String getPic() {
         if (pic!=null)

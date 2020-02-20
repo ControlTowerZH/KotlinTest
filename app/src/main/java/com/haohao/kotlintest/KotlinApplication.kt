@@ -11,7 +11,7 @@ import timber.log.Timber
  * @date 2020/2/9
  */
 
-class KtolinApplication : Application(){
+class KotlinApplication : Application(){
 
     override fun onCreate() {
         super.onCreate()

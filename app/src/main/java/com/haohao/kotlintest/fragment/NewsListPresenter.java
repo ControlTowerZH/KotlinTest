@@ -20,7 +20,6 @@ public class NewsListPresenter extends BasePresenter<NewsListMvpView> {
     private final DataManager mDataManager;
 
     private Disposable mDisposable;
-    private Disposable mTypeDisposable;
 
     public NewsListPresenter() {
         mDataManager = DataManager.getInstance();
@@ -29,7 +28,7 @@ public class NewsListPresenter extends BasePresenter<NewsListMvpView> {
     @Override
     public void detachView() {
         super.detachView();
-        RxUtil.dispose(mDisposable, mTypeDisposable);
+        RxUtil.dispose(mDisposable);
     }
 
     public void getLatest(int parentID, int pageNum, final boolean oldEndlessState, final Context context) {

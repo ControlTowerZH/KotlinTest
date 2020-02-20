@@ -43,6 +43,9 @@ class NewsListAdapter : RecyclerView.Adapter<NewsListAdapter.TitleHolder> {
     }
 
     override fun getItemCount(): Int {
+        if (headlines==null){
+            return 0
+        }
         return headlines!!.size
     }
 

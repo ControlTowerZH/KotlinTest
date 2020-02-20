@@ -73,5 +73,6 @@ dependencies {
 
     implementation(name: 'mvp-1.0.0', ext: 'aar')
     implementation(name: 'toolbox-1.0.4', ext: 'aar')
+    implementation(name: 'recycler-0.0.3', ext: 'aar')
 
 }

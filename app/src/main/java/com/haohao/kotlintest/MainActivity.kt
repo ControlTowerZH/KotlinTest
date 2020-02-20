@@ -1,5 +1,6 @@
 package com.haohao.kotlintest
 
+import android.content.Intent
 import android.os.Bundle
 
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private fun initListener() {
         tv_main.setOnClickListener {
             ToastUtils.showShort(baseContext,"ListMain")
+            startActivity(Intent(MainListActivity@this,MainListActivity::class.java))
         }
 
         tv_test1.setOnClickListener {
