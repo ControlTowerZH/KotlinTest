@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun initListener() {
         tv_main.setOnClickListener {
-            ToastUtils.showShort(baseContext,"ListMain")
             startActivity(Intent(MainListActivity@this,MainListActivity::class.java))
         }
 
