@@ -11,7 +11,7 @@ import androidx.annotation.Keep
  * 邮箱：renzhongyigoo@gmail.com
  */
 @Keep
-public class Headline {
+class Headline {
 
     /**
      * Type :  voa csvoa news

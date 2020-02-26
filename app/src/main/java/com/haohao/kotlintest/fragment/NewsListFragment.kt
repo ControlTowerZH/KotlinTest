@@ -100,16 +100,16 @@ class NewsListFragment : Fragment(),NewsListMvpView{
     }
 
     private fun initData(categoryCode: Int){
-        mPresenter!!.getLatest(categoryCode, pageCount, recyclerView.endless, context)
+        mPresenter!!.getLatest(categoryCode, pageCount, recyclerView.endless, context!!)
     }
 
     private val mRefreshListener = SwipeRefreshLayout.OnRefreshListener {
-        mPresenter!!.getLatest(mCategoryCode, pageCount, recyclerView.endless, context)
+        mPresenter!!.getLatest(mCategoryCode, pageCount, recyclerView.endless, context!!)
     }
 
     private val mEndlessListener = EndlessListRecyclerView.OnEndlessListener {
         Timber.d("TitleFragment====OnEndlessListener")
-        mPresenter!!.loadMore(mCategoryCode, mCurrentPage + 1, pageCount, context)
+        mPresenter!!.loadMore(mCategoryCode, mCurrentPage + 1, pageCount, context!!)
     }
 
 
@@ -121,13 +121,13 @@ class NewsListFragment : Fragment(),NewsListMvpView{
         Toast.makeText(context, resId, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onLatestLoaded(data: MutableList<Headline>?) {
-        mAdapter!!.setItems(data!!)
+    override fun onLatestLoaded(data: MutableList<Headline>) {
+        mAdapter!!.setItems(data)
         mCurrentPage = 1
     }
 
-    override fun onMoreLoaded(data: MutableList<Headline>?, page: Int) {
-        mAdapter!!.addItems(data!!)
+    override fun onMoreLoaded(data: MutableList<Headline>, page: Int) {
+        mAdapter!!.addItems(data)
         mCurrentPage = page
         Timber.d("TitleFragment加载更多！")
     }

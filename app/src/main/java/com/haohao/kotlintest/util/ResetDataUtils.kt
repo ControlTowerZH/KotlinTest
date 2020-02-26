@@ -20,8 +20,8 @@ object ResetDataUtils {
     private val isVideo: Boolean
         get() = false
 
-    fun resetHeadlines(data: List<HeadlineCategory>, context: Context?): List<Headline> {
-        val headlines = ArrayList<Headline>()
+    fun resetHeadlines(data: MutableList<HeadlineCategory>, context: Context?): MutableList<Headline> {
+        val headlines = mutableListOf<Headline>()
         for (i in data.indices) {
             val headlineCategory = data[i]
             val headline = Headline()
