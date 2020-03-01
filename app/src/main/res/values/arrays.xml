@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string-array name="category_images"/>
+
+    <string-array name="category_name"/>
+
+    <integer-array name="category_code"/>
+
+
     <string-array name="category_name_voa">
         <item>@string/category_all</item>
         <item>@string/category_usa</item>
@@ -28,4 +36,203 @@
         <item>9</item>
         <item>10</item>
     </integer-array>
+
+    <string-array name="category_name_csvoa">
+        <item>@string/category_all</item>
+        <item>@string/category_america</item>
+        <item>@string/category_africa</item>
+        <item>@string/category_asia</item>
+        <item>@string/category_mideast</item>
+
+        <item>@string/category_europe</item>
+        <item>@string/category_science_technology</item>
+        <item>@string/category_entertainment</item>
+        <item>@string/category_economy</item>
+        <item>@string/category_health</item>
+    </string-array>
+
+    <integer-array name="category_code_csvoa">
+        <item>0</item>
+        <item>101</item>
+        <item>102</item>
+        <item>103</item>
+        <item>104</item>
+        <item>105</item>
+        <item>106</item>
+        <item>107</item>
+        <item>108</item>
+        <item>109</item>
+    </integer-array>
+
+    <integer-array name="category_code_bbc">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </integer-array>
+
+    <string-array name="category_name_bbc">
+        <item>@string/category_all</item>
+        <item>@string/category_six_minute</item>
+        <item>@string/category_working</item>
+
+        <item>@string/category_news</item>
+        <item>@string/category_news_words</item>
+        <item>@string/category_native</item>
+
+        <item>@string/category_economy_people</item>
+        <item>ITV News</item>
+        <item>Skypes News</item>
+    </string-array>
+
+
+    <integer-array name="category_code_bbc_video">
+        <item>3</item>
+        <item>4</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </integer-array>
+
+    <string-array name="category_name_bbc_video">
+
+        <item>@string/category_news</item>
+        <item>@string/category_news_words</item>
+        <item>@string/category_economy_people</item>
+        <item>ITV News</item>
+        <item>Skypes News</item>
+    </string-array>
+
+
+    <integer-array name="category_code_bbc_news">
+        <item>3</item>
+        <item>4</item>
+    </integer-array>
+
+    <string-array name="category_name_bbc_news">
+        <item>BBC News</item>
+        <item>Skypes News</item>
+    </string-array>
+
+
+    <integer-array name="category_code_top_news">
+        <item>0</item>
+        <item>120</item>
+        <item>121</item>
+        <item>291</item>
+        <item>292</item>
+
+        <item>293</item>
+        <item>122</item>
+        <item>123</item>
+        <item>124</item>
+        <item>126</item>
+
+        <item>127</item>
+        <item>128</item>
+    </integer-array>
+
+    <string-array name="category_name_top_news">
+        <item>@string/category_all</item>
+        <item>@string/category_school</item>
+        <item>@string/category_entertainment</item>
+        <item>@string/category_film</item>
+
+        <item>@string/category_travel</item>
+        <item>@string/category_game</item>
+        <item>@string/category_science_technology</item>
+        <item>@string/category_sports</item>
+        <item>@string/category_workplace</item>
+
+        <item>@string/category_economics</item>
+        <item>@string/category_culture</item>
+        <item>@string/category_life</item>
+    </string-array>
+
+
+    <integer-array name="category_code_ted">
+        <item>0</item>
+        <item>201</item>
+        <item>202</item>
+        <item>203</item>
+        <item>204</item>
+        <item>205</item>
+        <item>206</item>
+        <item>207</item>
+        <item>208</item>
+        <item>209</item>
+        <item>210</item>
+        <item>211</item>
+    </integer-array>
+
+    <string-array name="category_name_ted">
+        <item>@string/category_all</item>
+        <item>@string/category_culture</item>
+        <item>@string/category_economy</item>
+        <item>@string/category_politics</item>
+        <item>@string/category_science</item>
+        <item>@string/category_science_technology</item>
+
+        <item>@string/category_health</item>
+        <item>@string/category_art</item>
+        <item>@string/category_music</item>
+        <item>@string/category_education</item>
+        <item>@string/category_talent</item>
+        <item>@string/category_nature</item>
+
+    </string-array>
+
+    <integer-array name="category_code_top_video">
+        <item>0</item>
+        <item>401</item>
+        <item>402</item>
+        <item>403</item>
+        <item>404</item>
+        <item>405</item>
+        <item>406</item>
+        <item>407</item>
+        <item>408</item>
+        <item>409</item>
+        <item>410</item>
+        <item>411</item>
+        <item>412</item>
+    </integer-array>
+
+    <string-array name="category_name_top_video">
+        <item>@string/category_all</item>
+        <item>@string/category_music</item>
+        <item>@string/category_entertain</item>
+        <item>@string/category_sports</item>
+        <item>@string/category_film</item>
+        <item>@string/category_science_technology</item>
+
+        <item>@string/category_economy</item>
+        <item>@string/category_politics</item>
+        <item>@string/category_bbc_documentary</item>
+        <item>@string/category_health</item>
+        <item>@string/category_education</item>
+        <item>@string/category_talkshow</item>
+
+        <item>@string/category_life</item>
+
+    </string-array>
+
+    <integer-array name="category_code_how_say">
+        <item>198</item>
+        <item>197</item>
+        <item>199</item>
+        <item>200</item>
+    </integer-array>
+
+    <string-array name="category_name_how_say">
+        <item>@string/category_all</item>
+        <item>@string/category_movies</item>
+        <item>@string/category_one_english</item>
+        <item>@string/category_how_say</item>
+    </string-array>
 </resources>

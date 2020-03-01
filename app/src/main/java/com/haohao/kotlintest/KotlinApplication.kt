@@ -1,6 +1,7 @@
 package com.haohao.kotlintest
 
 import android.app.Application
+import com.haohao.kotlintest.help.CategoryDataHelper
 import com.haohao.kotlintest.help.InfoHelper
 import timber.log.Timber
 
@@ -19,5 +20,7 @@ class KotlinApplication : Application(){
             Timber.plant(Timber.DebugTree())
         }
         InfoHelper.init(applicationContext)
+        CategoryDataHelper.init(applicationContext)
+
     }
 }

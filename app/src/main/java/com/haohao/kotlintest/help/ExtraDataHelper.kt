@@ -9,8 +9,7 @@ import com.haohao.kotlintest.util.HeadlineType
 object ExtraDataHelper {
     fun buildExtraFragment(typeNames: Array<String>, typeCodes: IntArray): Fragment {
         var type = ""
-        when (CATEGORY_VOA_SPECIAL) {
-            //InfoHelper.getInstance().getCategory()
+        when (InfoHelper.getInstance().getCategory()) {
             CATEGORY_VOA_SPECIAL -> type = HeadlineType.VOA
             CATEGORY_VOA_STANDARD -> type = HeadlineType.CSVOA
             CATEGORY_VOA_VIDEO -> type = HeadlineType.VOAVIDEO

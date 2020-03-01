@@ -2,14 +2,10 @@ package com.haohao.kotlintest.data
 
 import com.haohao.kotlintest.BuildConfig
 import com.haohao.kotlintest.data.model.HeadlineCategory
-import com.haohao.kotlintest.data.remote.AppsResponse
 import com.haohao.kotlintest.data.remote.AppsService
+import com.haohao.kotlintest.help.InfoHelper
 import com.haohao.kotlintest.util.HeadlineType
 import com.iyuba.module.toolbox.SingleParser
-
-import java.text.SimpleDateFormat
-import java.util.Locale
-
 import io.reactivex.Single
 import io.reactivex.SingleTransformer
 import okhttp3.OkHttpClient
@@ -17,6 +13,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory
+import java.text.SimpleDateFormat
+import java.util.*
 
 class DataManager private constructor() {
 
@@ -39,15 +37,17 @@ class DataManager private constructor() {
     }
 
     fun getCategoryData(parentID: Int, pages: Int, pageNum: Int): Single<MutableList<HeadlineCategory>> {
-        when ("voa") {
+        when (InfoHelper.getInstance().getCategoryHeadlineType()) {
             HeadlineType.VOA, HeadlineType.MEIYU//和慢速相同的接口，全部ID为198
             -> return mAppsService.getVOACategoryData(Constant.ANDROID, Constant.JSON, Constant.appId,
                     0, pages, pageNum, parentID)
                     .compose(this.applyParser())
-            HeadlineType.CSVOA, HeadlineType.VOAVIDEO -> return mAppsService.getCSCategoryData(Constant.ANDROID, Constant.JSON, Constant.appId,
+            HeadlineType.CSVOA, HeadlineType.VOAVIDEO ->
+                return mAppsService.getCSCategoryData(Constant.ANDROID, Constant.JSON, Constant.appId,
                     0, pages, pageNum, parentID)
                     .compose(this.applyParser())
-            HeadlineType.BBC, HeadlineType.BBCWORDVIDEO -> return mAppsService.getBBCCategoryData(Constant.ANDROID, Constant.JSON, Constant.appId,
+            HeadlineType.BBC, HeadlineType.BBCWORDVIDEO ->
+                return mAppsService.getBBCCategoryData(Constant.ANDROID, Constant.JSON, Constant.appId,
                     0, pages, pageNum, parentID)
                     .compose(this.applyParser())
 
