@@ -2,7 +2,10 @@ package com.haohao.kotlintest.data
 
 import com.haohao.kotlintest.BuildConfig
 import com.haohao.kotlintest.data.model.HeadlineCategory
+import com.haohao.kotlintest.data.model.HeadlineTopCategory
 import com.haohao.kotlintest.data.remote.AppsService
+import com.haohao.kotlintest.data.remote.CmsApiService
+import com.haohao.kotlintest.data.remote.CmsResponse
 import com.haohao.kotlintest.help.InfoHelper
 import com.haohao.kotlintest.util.HeadlineType
 import com.iyuba.module.toolbox.SingleParser
@@ -19,6 +22,7 @@ import java.util.*
 class DataManager private constructor() {
 
     private val mAppsService: AppsService
+    private val mCmsApiService: CmsApiService
 
     init {
         val builder = OkHttpClient.Builder()
@@ -33,7 +37,7 @@ class DataManager private constructor() {
         val rxJavaFactory = RxJava2CallAdapterFactory.create()
 
         mAppsService = AppsService.Creator.createService(client, gsonFactory, rxJavaFactory)
-
+        mCmsApiService=CmsApiService.Creator.createService(client,gsonFactory,rxJavaFactory)
     }
 
     fun getCategoryData(parentID: Int, pages: Int, pageNum: Int): Single<MutableList<HeadlineCategory>> {
@@ -76,6 +80,13 @@ class DataManager private constructor() {
                 0, pages, pageNum, parentID)
                 .compose(this.applyParser())
     }
+
+    fun getCategoryTopData(parentID: Int, pages: Int, pageNum: Int): Single<MutableList<HeadlineTopCategory>> {
+        return mCmsApiService.getNewsCategoryData("0", "0", pageNum,
+                pages, Constant.JSON, "0", parentID)
+                .compose(this.applyParser<CmsResponse.GetCategoryTopHeadlines, MutableList<HeadlineTopCategory>>())
+    }
+
 
     private fun <T, R> applyParser(): SingleTransformer<T, R> {
         return SingleParser.parseTransformer as SingleTransformer<T, R>

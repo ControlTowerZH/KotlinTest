@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.haohao.kotlintest.R
 import com.haohao.kotlintest.data.model.Headline
+import com.haohao.kotlintest.help.InfoHelper
+import com.haohao.kotlintest.util.HeadlineType
 import com.holybible.widget.recycler.EndlessListRecyclerView
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import timber.log.Timber
@@ -100,16 +102,29 @@ class NewsListFragment : Fragment(),NewsListMvpView{
     }
 
     private fun initData(categoryCode: Int){
-        mPresenter!!.getLatest(categoryCode, pageCount, recyclerView.endless, context!!)
+        if(InfoHelper.getInstance().getCategoryHeadlineType() == HeadlineType.NEWS){
+            mPresenter!!.getTopLatest(mCategoryCode, pageCount, recyclerView.endless, context!!)
+        }else{
+            mPresenter!!.getLatest(categoryCode, pageCount, recyclerView.endless, context!!)
+        }
     }
 
     private val mRefreshListener = SwipeRefreshLayout.OnRefreshListener {
-        mPresenter!!.getLatest(mCategoryCode, pageCount, recyclerView.endless, context!!)
+        if(InfoHelper.getInstance().getCategoryHeadlineType() == HeadlineType.NEWS){
+            mPresenter!!.getTopLatest(mCategoryCode, pageCount, recyclerView.endless, context!!)
+        }else{
+            mPresenter!!.getLatest(mCategoryCode, pageCount, recyclerView.endless, context!!)
+        }
     }
 
     private val mEndlessListener = EndlessListRecyclerView.OnEndlessListener {
         Timber.d("TitleFragment====OnEndlessListener")
-        mPresenter!!.loadMore(mCategoryCode, mCurrentPage + 1, pageCount, context!!)
+        if(InfoHelper.getInstance().getCategoryHeadlineType() == HeadlineType.NEWS) {
+            mPresenter!!.loadTopMore(mCategoryCode, Integer.valueOf(lastId), pageCount, context!!)
+        }else {
+            mPresenter!!.loadMore(mCategoryCode, mCurrentPage + 1, pageCount, context!!)
+        }
+
     }
 
 

@@ -14,6 +14,7 @@ import com.haohao.kotlintest.CommonConstant.VOA_SOUNDS_VIP_URL
 import com.haohao.kotlintest.data.HeadlineConstant.BBC_VIDEO_URL
 import com.haohao.kotlintest.data.HeadlineConstant.MP4
 import com.haohao.kotlintest.data.HeadlineConstant.VIDEO_VIP_URL
+import com.haohao.kotlintest.data.model.HeadlineTopCategory
 
 object ResetDataUtils {
 
@@ -59,6 +60,28 @@ object ResetDataUtils {
             //http://staticvip.iyuba.cn/sounds/minutes/sound字段
             //http://staticvip.iyuba.cn/sounds/voa   voa慢速和常速
             //http://static3.iyuba.com/resource/ownid/packId/titleid/titleid.mp4 ted
+        }
+        return headlines
+    }
+
+    fun resetHeadlines(data: MutableList<HeadlineTopCategory>): MutableList<HeadlineCategory> {
+        val headlines = ArrayList<HeadlineCategory>()
+        for (i in data.indices) {
+            val headlineCategory = data[i]
+            val headline = HeadlineCategory()
+            headline.id = headlineCategory.id
+            headline.type = HeadlineType.NEWS//IHeadlineManager.categoryType
+            headline.Category = headlineCategory.Category
+            headline.DescCn = headlineCategory.DescCn
+            headline.TitleCn = headlineCategory.TitleCn
+            headline.CreatTime = headlineCategory.CreatTime
+            headline.Title = headlineCategory.Title
+            headline.Sound = headlineCategory.Sound
+            headline.pic = headlineCategory.getPicAll()
+            headline.HotFlg = headlineCategory.HotFlg
+            headline.ReadCount = headlineCategory.ReadCount
+            headline.Source = headlineCategory.Source
+            headlines.add(headline)
         }
         return headlines
     }

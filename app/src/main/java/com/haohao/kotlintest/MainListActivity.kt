@@ -21,7 +21,7 @@ import java.util.*
 class MainListActivity : AppCompatActivity() {
 
     //var 可变  val 不可变
-    private var mDropDownAdapter:DropDownAdapter? = null
+    private var mDropDownAdapter: DropDownAdapter? = null
     private var typeStr: String? = null
     private var typeRequest: String? = null
     private var pageCount: Int = 0
@@ -52,25 +52,23 @@ class MainListActivity : AppCompatActivity() {
         val fm = supportFragmentManager
         val transaction = fm.beginTransaction()
         val fragment = fm.findFragmentByTag("ExtraDataHelper")
+        if (fragment != null) transaction.remove(fragment)//hide
+        // mExtraFragment = ExtraDataHelper.buildExtraFragment(mCategoryDataHelper.names, mCategoryDataHelper.codes)
+        val fragment0 = ExtraDataHelper.buildExtraFragment(mCategoryDataHelper!!.names, mCategoryDataHelper!!.codes)
         if (isFirst) {
-            if (fragment != null) transaction.remove(fragment)//hide
-           // mExtraFragment = ExtraDataHelper.buildExtraFragment(mCategoryDataHelper.names, mCategoryDataHelper.codes)
-            val fragment0 = ExtraDataHelper.buildExtraFragment(mCategoryDataHelper!!.names,mCategoryDataHelper!!.codes)
-            if(isFirst) {
-                transaction.add(R.id.frame_container, fragment0, "ExtraDataHelper")
-            }else{
-                transaction.replace(R.id.frame_container, fragment0, "ExtraDataHelper")
-            }
-            transaction.show(fragment0)
-            transaction.commit()
+            transaction.add(R.id.frame_container, fragment0, "ExtraDataHelper")
+        } else {
+            transaction.replace(R.id.frame_container, fragment0, "ExtraDataHelper")
         }
+        transaction.show(fragment0)
+        transaction.commit()
     }
 
     private fun setUpDropDown(isShow: Boolean) {
         val collapsedView = LayoutInflater.from(baseContext).inflate(
                 R.layout.partial_drop_down_header, null, false)
         val expandedView = LayoutInflater.from(baseContext).inflate(
-               R.layout.headline_partial_drop_down_expanded, null, false)
+                R.layout.headline_partial_drop_down_expanded, null, false)
 
 
         collapsedView.ll_center!!.isSoundEffectsEnabled = false
@@ -82,9 +80,9 @@ class MainListActivity : AppCompatActivity() {
         mDropDownAdapter = DropDownAdapter()
         mDropDownAdapter?.setDelegate(mViewActions)
 
-        collapsedView.tv_category_name.text=(InfoHelper.getInstance().getCategoryName(baseContext))
+        collapsedView.tv_category_name.text = (InfoHelper.getInstance().getCategoryName(baseContext))
 
-        val category:String = InfoHelper.getInstance().getCategory().toString()
+        val category: String = InfoHelper.getInstance().getCategory().toString()
         if (category != CATEGORY_VOA_SPECIAL) {
             setFirstPosition(category)
         }
@@ -120,7 +118,7 @@ class MainListActivity : AppCompatActivity() {
             infoHelper.putCategory(category)
 
             val categoryName = infoHelper.getCategoryName(baseContext)
-            tv_category_name.text=categoryName
+            tv_category_name.text = categoryName
 
             //mCategory = category
             //EventBus.getDefault().post(ChangeCategoryEvent(categoryName))
