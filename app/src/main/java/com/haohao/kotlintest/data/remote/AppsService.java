@@ -104,6 +104,27 @@ public interface AppsService {
                                                                   @Query("parentID") int parentID,
                                                                   @Query("fields") String fields);
 
+    @GET("iyuba/textExamApi.jsp")
+//  除开BBC和BBC视频以外都用这个拿取字幕
+    Single<CmsResponse.GetDetail> getDetails(@Query("voaid") String voaid,
+                                             @Query("format") String format
+
+    );
+
+    @GET("minutes/textAllApi.jsp")
+        //BBC和BBC视频用这个,字幕
+    Single<CmsResponse.GetBBCDetail> getBBCDetails(@Query("bbcid") String voaid,
+                                                   @Query("format") String format
+
+    );
+
+    @GET("afterclass/getText.jsp")
+        //听歌,字幕
+    Single<CmsResponse.GetBBCDetail> getSongDetails(@Query("SongId") String songId,
+                                                    @Query("format") String format
+
+    );
+
     class Creator {
         public static AppsService createService(OkHttpClient client, GsonConverterFactory gsonFactory, RxJava2CallAdapterFactory rxJavaFactory) {
             Retrofit retrofit = new Retrofit.Builder()

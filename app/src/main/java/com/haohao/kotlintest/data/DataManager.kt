@@ -2,6 +2,7 @@ package com.haohao.kotlintest.data
 
 import com.haohao.kotlintest.BuildConfig
 import com.haohao.kotlintest.data.model.HeadlineCategory
+import com.haohao.kotlintest.data.model.HeadlineDetail
 import com.haohao.kotlintest.data.model.HeadlineTopCategory
 import com.haohao.kotlintest.data.remote.AppsService
 import com.haohao.kotlintest.data.remote.CmsApiService
@@ -85,6 +86,18 @@ class DataManager private constructor() {
         return mCmsApiService.getNewsCategoryData("0", "0", pageNum,
                 pages, Constant.JSON, "0", parentID)
                 .compose(this.applyParser<CmsResponse.GetCategoryTopHeadlines, MutableList<HeadlineTopCategory>>())
+    }
+
+
+    //获取字幕或者文章信息
+    fun getDetails(userId: Int, appId: String, type: String, id: String): Single<MutableList<HeadlineDetail>> {
+
+        when (type) {
+            HeadlineType.NEWS -> return mCmsApiService.getDetail(id, "json", userId, appId).compose(this.applyParser<CmsResponse.GetNewsDetail, MutableList<HeadlineDetail>>())
+            HeadlineType.BBC, HeadlineType.BBCWORDVIDEO -> return mAppsService.getBBCDetails(id, Constant.JSON).compose(this.applyParser<CmsResponse.GetBBCDetail, MutableList<HeadlineDetail>>())
+            HeadlineType.SONG -> return mAppsService.getSongDetails(id, Constant.JSON).compose(this.applyParser<CmsResponse.GetBBCDetail, MutableList<HeadlineDetail>>())
+        }
+        return mAppsService.getDetails(id, Constant.JSON).compose(this.applyParser<CmsResponse.GetDetail, MutableList<HeadlineDetail>>())
     }
 
 

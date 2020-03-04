@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.haohao.kotlintest.R
 import com.haohao.kotlintest.data.model.Headline
+import com.haohao.kotlintest.study.StudyActivity
 import com.haohao.kotlintest.util.ToastUtils
 import kotlinx.android.synthetic.main.headline_item_title_small.view.*
 import java.text.SimpleDateFormat
@@ -81,7 +82,8 @@ class NewsListAdapter : RecyclerView.Adapter<NewsListAdapter.TitleHolder> {
              simpleItemView.tv_headlines_title_cn.text=(headline.titleCn)
 
              simpleItemView.setOnClickListener {
-                 ToastUtils.showShort(simpleItemView.context,headline.title!!)
+                 //ToastUtils.showShort(simpleItemView.context,headline.title!!)
+                 itemView.context.startActivity(StudyActivity.getIntent2Me(itemView.context,headline))
              }
          }
     }

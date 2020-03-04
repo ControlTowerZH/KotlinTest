@@ -19,6 +19,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 repositories {
 
@@ -75,5 +79,15 @@ dependencies {
     implementation(name: 'toolbox-1.0.4', ext: 'aar')
     implementation(name: 'recycler-0.0.3', ext: 'aar')
     implementation 'com.yalantis:contextmenu:1.0.7'//-modify
+    implementation(name: "subtitle-1.0.7", ext: "aar")
+
+    implementation(name: "ijkplayer-arm64-0.8.8-modify", ext: "aar")
+    implementation(name: "ijkplayer-armv7a-0.8.8-modify", ext: "aar")
+    implementation(name: "ijkplayer-java-0.8.8-modify", ext: "aar")
+    implementation(name: "ijkplayer-x86-0.8.8-modify", ext: "aar")
+    implementation(name: "ijkplayer-x86_64-0.8.8-modify", ext: "aar")
+
+    implementation(name: "MediaPlayer-4.3.0-modify", ext: "aar")
+    implementation(name: "player-1.2.5", ext: "aar")
 
 }

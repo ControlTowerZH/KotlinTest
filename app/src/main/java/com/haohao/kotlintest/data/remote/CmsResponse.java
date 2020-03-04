@@ -3,6 +3,7 @@ package com.haohao.kotlintest.data.remote;
 import com.google.gson.annotations.SerializedName;
 import com.haohao.kotlintest.data.model.Headline;
 import com.haohao.kotlintest.data.model.HeadlineCategory;
+import com.haohao.kotlintest.data.model.HeadlineDetail;
 import com.haohao.kotlintest.data.model.HeadlineTopCategory;
 import com.iyuba.module.toolbox.SingleParser;
 
@@ -110,24 +111,74 @@ public interface CmsResponse {
         }
     }
 
-//    class GetDetail implements SingleParser<List<HeadlineDetail>> {
-//        @SerializedName("result")
-//        public int result;
-//        @SerializedName("total")
-//        public int total;
-//        @SerializedName("msg")
-//        public String message;
-//        @SerializedName("data")
-//        public List<HeadlineDetail> data;
-//
-//        @Override
-//        public Single<List<HeadlineDetail>> parse() {
-//            if (result == 1) {
-//                if (data == null) data = new ArrayList<>();
-//                return Single.just(data);
-//            } else {
-//                return Single.error(new Throwable("request fail."));
-//            }
-//        }
-//    }
+
+    class GetNewsDetail implements SingleParser<List<HeadlineDetail>> {
+        @SerializedName("total")
+        public String total;
+        @SerializedName("data")
+        public List<HeadlineDetail> data;
+
+        @Override
+        public Single<List<HeadlineDetail>> parse() {
+            try {
+                if (Integer.parseInt(total) >= 1) {
+                    if (data == null) data = new ArrayList<>();
+                    return Single.just(data);
+                } else {
+                    return Single.error(new Throwable("request fail."));
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                return Single.error(new Throwable("request fail."));
+            }
+        }
+    }
+
+    class GetDetail implements SingleParser<List<HeadlineDetail>> {
+        @SerializedName("total")
+        public String total;
+        @SerializedName("voatext")
+        public List<HeadlineDetail> data;
+
+        @Override
+        public Single<List<HeadlineDetail>> parse() {
+            try {
+                if (Integer.parseInt(total) >= 1) {
+                    if (data == null) data = new ArrayList<>();
+                    return Single.just(data);
+                } else {
+                    return Single.error(new Throwable("request fail."));
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                return Single.error(new Throwable("request fail."));
+            }
+        }
+    }
+
+    class GetBBCDetail implements SingleParser<List<HeadlineDetail>> {
+        @SerializedName("total")
+        public String total;
+        @SerializedName("data")
+        public List<HeadlineDetail> data;
+
+        @Override
+        public Single<List<HeadlineDetail>> parse() {
+            try {
+                if (Integer.parseInt(total) >= 1) {
+                    if (data == null) data = new ArrayList<>();
+                    return Single.just(data);
+                } else {
+                    return Single.error(new Throwable("request fail."));
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                return Single.error(new Throwable("request fail."));
+            }
+        }
+    }
+
 }

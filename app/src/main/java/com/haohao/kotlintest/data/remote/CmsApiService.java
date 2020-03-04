@@ -23,6 +23,15 @@ public interface CmsApiService {
                                                                     @Query("myid") String myid,
                                                                     @Query("categoryId") int categoryId);
 
+    //头条获取文章详情
+    @GET("cmsApi/getText.jsp")
+    Single<CmsResponse.GetNewsDetail> getDetail(@Query("NewsId") String id,
+                                                @Query("format") String format,
+                                                @Query("uid") int uid,
+                                                @Query("appid") String appid
+
+    );
+
     class Creator {
         public static CmsApiService createService(OkHttpClient client, GsonConverterFactory gsonFactory, RxJava2CallAdapterFactory rxJavaFactory) {
             Retrofit retrofit = new Retrofit.Builder()
