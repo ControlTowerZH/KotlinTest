@@ -2,11 +2,11 @@ package com.haohao.kotlintest.study
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.view.MenuItem
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
+import androidx.appcompat.app.AppCompatActivity
 import com.haohao.kotlintest.R
 import com.haohao.kotlintest.data.model.Headline
 import com.haohao.kotlintest.data.model.HeadlineDetail
@@ -20,6 +20,7 @@ import com.iyuba.play.IJKPlayer
 import kotlinx.android.synthetic.main.activity_study.*
 import timber.log.Timber
 
+ @Suppress("UNREACHABLE_CODE")
  class StudyActivity : AppCompatActivity(),AudioStudyMvpView {
 
     companion object {
@@ -35,7 +36,6 @@ import timber.log.Timber
             return intent
         }
     }
-
 
      var categoryName: String? = null
      var title: String? = null
@@ -57,15 +57,26 @@ import timber.log.Timber
         mPlayer = IJKPlayer()
         mPresenter= AudioStudyPresenter()
         mPresenter!!.attachView(this)
-
+        setSupportActionBar(toolbar)
         waiting= HeadlineCustomDialog(this)
         mContext=this
         subtitle.setOnSelectListener(mSubtitleSelectListener)
 
         initData()
+        initListener()
     }
 
-    private fun initData() {
+     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+         return super.onOptionsItemSelected(item)
+         when(item.itemId){
+             android.R.id.home-> finish()//这是toolbar 的返回键！！！
+             else -> showMessage("else")
+         }
+     }
+     private fun initListener() {
+     }
+
+     private fun initData() {
         categoryName = intent.getStringExtra("categoryName")
         title = intent.getStringExtra("title")
         titleCn = intent.getStringExtra("title_cn")

@@ -2,8 +2,8 @@ package com.haohao.kotlintest
 
 import android.content.Intent
 import android.os.Bundle
-
 import androidx.appcompat.app.AppCompatActivity
+import com.haohao.kotlintest.test1.Test1Activity
 import com.haohao.kotlintest.util.ToastUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,12 +18,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun initListener() {
         tv_main.setOnClickListener {
-            startActivity(Intent(MainListActivity@this,MainListActivity::class.java))
+            startActivity(Intent(MainActivity@this,MainListActivity::class.java))
             //ToastUtils.showShort(baseContext,"ListMain")
         }
 
         tv_test1.setOnClickListener {
-            ToastUtils.showShort(baseContext,"tv_test1")
+            startActivity(Intent(MainActivity@this, Test1Activity::class.java))
         }
         tv_test2.setOnClickListener {
             ToastUtils.showShort(baseContext,"tv_test2")
