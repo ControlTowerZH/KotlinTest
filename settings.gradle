@@ -1,2 +1,2 @@
-include ':app', ':javalib'
+include ':app', ':javalib', ':libNew'
 rootProject.name='KotlinTest'
