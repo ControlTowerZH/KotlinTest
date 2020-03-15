@@ -17,11 +17,11 @@ public class MyClass {
 //         System.out.println(m+"个数的和为"+sum);
 //         System.out.println(m+"个数的平均值为"+(sum/m));
 //         scanner.close();
-        int i = 0;
-        while (i < 5) {
-            i++;
-            System.out.println("输出i=" + i);
-        }
+//        int i = 0;
+//        while (i < 5) {
+//            i++;
+//            System.out.println("输出i=" + i);
+//        }
         System.out.println("开始");
 //        while (scanner.hasNextLine()) {
 //            String s1 = scanner.nextLine();
@@ -43,7 +43,8 @@ public class MyClass {
         //get4String();
         //get5go2();
         //get6long();
-        get7Over();
+        //get7Over();
+       TestJava.getPasswordOk();
     }
 
     private static void get7Over() {
@@ -59,7 +60,7 @@ public class MyClass {
 
     }
 
-    private static void getLastStr(){
+    private static void get1LastStr(){
         Scanner scanner =new Scanner(System.in);
         while (scanner.hasNext()){
             String str =scanner.nextLine();
