@@ -54,6 +54,7 @@ public class TestJava {
         sc.close();
     }
 
+
     public static String delNum(String str){
         char[] ch= str.toCharArray();
         String n =null;
