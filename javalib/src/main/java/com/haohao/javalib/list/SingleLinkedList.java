@@ -56,9 +56,7 @@ public class SingleLinkedList implements List{
         newNode.data=e;
         newNode.next=p.next;
         p.next=newNode;
-        if (i==0){
-            head.next=newNode;
-        }
+
         size++;
     }
 

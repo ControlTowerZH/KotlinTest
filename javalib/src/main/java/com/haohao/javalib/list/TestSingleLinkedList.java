@@ -16,11 +16,8 @@ public class TestSingleLinkedList {
         list.add(456);
         list.add(678);
         list.add(789);
-        list.add(111);
-        list.add(222);
 
-        list.add(5,666);
-        list.add(0,100);
+        list.add(0,666);
 
         System.out.println(list.size());
         System.out.println(list.isEmpty());
