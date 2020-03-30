@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".study.StudyActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="1dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:navigationIcon="@drawable/headline_nav_back"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.haohao.kotlintest.view.HeadlineMarqueeTextView
+                android:id="@+id/center_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                tools:text="标题"/>
+            <ImageView
+                android:id="@+id/nav_right_button"
+                android:layout_width="?android:attr/actionBarSize"
+                android:layout_height="?android:attr/actionBarSize"
+                android:scaleType="center"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+        </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/linear_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:id="@+id/tv_current_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/colorPrimary"
+                    tools:text="00:00"/>
+
+                <SeekBar
+                    android:id="@+id/seekbar_headlines_player"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:maxHeight="8dp"
+                    android:minHeight="8dp"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/headline_audio_seekbar"
+                    android:splitTrack="false"
+                    android:thumb="@drawable/headline_audio_thumb"
+                    android:thumbOffset="0dp"/>
+
+                <TextView
+                    android:id="@+id/tv_total_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/colorPrimary"
+                    tools:text="03:47"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                </Space>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:padding="3dp"
+                        android:id="@+id/former_button"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/headline_audio_previous"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/media_play"
+                        android:padding="3dp"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_centerInParent="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/headline_audio_pause"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:padding="3dp"
+                        android:id="@+id/next_button"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/headline_audio_next"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/iv_more_function"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_headline_audio_more"
+                        />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linear_container"
+        android:layout_below="@id/toolbar"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <com.haohao.kotlintest.view.SubtitleView
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:id="@+id/subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:sub_background_color="@android:color/transparent"
+            app:sub_highlight_color="@color/colorPrimary"
+            app:sub_line_spacing_multi="1.2"
+            app:sub_normal_color="#888888"
+            app:sub_text_size="14.0"/>
+
+    </FrameLayout>
+</RelativeLayout>
