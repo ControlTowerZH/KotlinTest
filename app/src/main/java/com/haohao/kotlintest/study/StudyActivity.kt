@@ -125,7 +125,7 @@ class StudyActivity : AppCompatActivity(),AudioStudyMvpView {
             State.COMPLETED -> {
                 mProgressMover.removeMessages(0)
                 media_play.setImageResource(R.drawable.headline_audio_play)
-                playNextAudio()
+                //playNextAudio()
             }
             State.ERROR -> {
                 mProgressMover.removeMessages(0)
@@ -140,7 +140,7 @@ class StudyActivity : AppCompatActivity(),AudioStudyMvpView {
         seekbar_headlines_player.setProgress(progress)
         tv_current_time.setText(formatTime(progress / 1000))
         subtitle.syncProgress(progress.toLong())
-        mProgressMover.sendEmptyMessageDelayed(0, 500)
+        //mProgressMover.sendEmptyMessageDelayed(0, 500)
         true
     })
 
