@@ -1,10 +1,12 @@
 package com.haohao.kotlintest.test1
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.haohao.kotlintest.MainListActivity
 import com.haohao.kotlintest.R
 import kotlinx.android.synthetic.main.activity_test1.*
 
@@ -47,6 +49,10 @@ class Test1Activity : AppCompatActivity() {
                 replace(R.id.fl_test_1, fragment4)
                 true
             }
+        }
+        tv_flame.setOnClickListener {
+            startActivity(Intent(Test1Activity@this, AnimActivity::class.java))
+
         }
     }
 

@@ -89,5 +89,6 @@ dependencies {
 
     implementation(name: "MediaPlayer-4.3.0-modify", ext: "aar")
     implementation(name: "player-1.2.5", ext: "aar")
-
+    //implementation 'com.airbnb.android:lottie:2.3.1'
+    implementation 'com.airbnb.android:lottie:3.4.0'
 }
