@@ -1,10 +1,9 @@
 package com.haohao.kotlintest.data.model
 
 import android.text.TextUtils
-
-import com.google.gson.annotations.SerializedName
-
 import androidx.annotation.Keep
+import com.google.gson.annotations.SerializedName
+import com.haohao.kotlintest.data.Constant
 
 /**
  * 作者：renzhy on 17/2/15 20:07
@@ -91,6 +90,18 @@ class Headline {
             return pic1!!
         }
         return if (TextUtils.isEmpty(pic1)) "http://www.acv.com" else pic1!!
+    }
+
+    fun getSoundPath():String{
+        return if (sound!!.substring(0, 4) == "http") {
+            sound!!
+        }
+//        else if (isVideo()) {
+//            Constant.MEDIA_VIP_URL + id + Constant.MEDIA_SUFFIX
+//        }
+        else{
+            return  Constant.MEDIA_VIP_URL.toString() + sound
+        }
     }
 
     override fun equals(obj: Any?): Boolean {

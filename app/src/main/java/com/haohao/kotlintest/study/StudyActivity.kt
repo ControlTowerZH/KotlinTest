@@ -2,14 +2,15 @@ package com.haohao.kotlintest.study
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.MenuItem
-import android.view.View
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.haohao.kotlintest.R
 import com.haohao.kotlintest.data.model.Headline
 import com.haohao.kotlintest.data.model.HeadlineDetail
@@ -37,7 +38,7 @@ class StudyActivity : AppCompatActivity(),AudioStudyMvpView {
             intent.putExtra("imageUrl", headline.pic1)
             intent.putExtra("type", headline.type)
             intent.putExtra("id", headline.id)
-            intent.putExtra("sound", headline.sound)
+            intent.putExtra("sound", headline.getSoundPath())
             return intent
         }
     }
@@ -54,6 +55,7 @@ class StudyActivity : AppCompatActivity(),AudioStudyMvpView {
     private lateinit var mPlayer: IJKPlayer
     private var waiting: HeadlineCustomDialog? = null
     private lateinit var mContext:Context
+    private lateinit var mProgressMover: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,16 +71,70 @@ class StudyActivity : AppCompatActivity(),AudioStudyMvpView {
 
         initData()
         initListener()
+
+        mPlayer.initialize(sound)
+        mPlayer.setOnStateChangeListener(mStateChangeListener)
+        mPlayer.setOnBufferingUpdateListener(mBufferUpdateListener)
+        mPlayer.prepareAndPlay()
+
+        seekbar_headlines_player.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    mPlayer.seekTo(progress)
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar) {}
+        })
+
+        mProgressMover = Handler(Handler.Callback {
+            val progress = mPlayer.currentPosition
+            seekbar_headlines_player.progress=(progress)
+            tv_current_time.text=(formatTime(progress / 1000))
+            subtitle.syncProgress(progress.toLong())
+            mProgressMover.sendEmptyMessageDelayed(0, 500)
+            true
+        })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPlayer.stopAndRelease()
     }
 
      override fun onOptionsItemSelected(item: MenuItem): Boolean {
-         return super.onOptionsItemSelected(item)
+         //return super.onOptionsItemSelected(item)
          when(item.itemId){
              android.R.id.home-> finish()//这是toolbar 的返回键！！！
              else -> showMessage("else")
          }
+         return true
      }
      private fun initListener() {
+         nav_right_button.setOnClickListener {
+             showMessage("老刁别点！")
+         }
+         media_play.setOnClickListener {
+             mPlayer.toggle()
+         }
+         next_button.setOnClickListener {
+             val newPara: Int = subtitle.currParagraph + 1
+             if (newPara >= 0 && newPara < subtitle.subtitleCount) {
+                 val progress = subtitle.getSubtitle(newPara)!!.startTime.toInt()
+                 mPlayer.seekTo(progress)
+             }
+         }
+         former_button.setOnClickListener {
+             val newPara: Int = subtitle.currParagraph - 1
+             if (newPara >= 0 && newPara < subtitle.subtitleCount) {
+                 val progress = subtitle.getSubtitle(newPara)!!.startTime.toInt()
+                 mPlayer.seekTo(progress)
+             }
+         }
+         iv_more_function.setOnClickListener {
+             showError("toast")
+         }
      }
 
     private fun initData() {
@@ -96,7 +152,9 @@ class StudyActivity : AppCompatActivity(),AudioStudyMvpView {
     }
 
 
-    private val mBufferUpdateListener = IMediaPlayer.OnBufferingUpdateListener { mp, percent -> }
+    private val mBufferUpdateListener = IMediaPlayer.OnBufferingUpdateListener { mp, percent ->
+        seekbar_headlines_player.secondaryProgress=(percent * seekbar_headlines_player.max / 100)
+    }
 
     private val mStateChangeListener = OnStateChangeListener { newState ->
         when (newState) {
@@ -134,15 +192,14 @@ class StudyActivity : AppCompatActivity(),AudioStudyMvpView {
         }
     }
 
-
-    private  val mProgressMover = Handler(Handler.Callback {
-        val progress = mPlayer.currentPosition
-        seekbar_headlines_player.setProgress(progress)
-        tv_current_time.setText(formatTime(progress / 1000))
-        subtitle.syncProgress(progress.toLong())
-        //mProgressMover.sendEmptyMessageDelayed(0, 500)
-        true
-    })
+//    private val mProgressMover = Handler(Handler.Callback {
+//        val progress = mPlayer.currentPosition
+//        seekbar_headlines_player.setProgress(progress)
+//        tv_current_time.setText(formatTime(progress / 1000))
+//        subtitle.syncProgress(progress.toLong())
+//        mProgressMover.sendEmptyMessageDelayed(0, 500)
+//        true
+//    })
 
 
     private val mSubtitleSelectListener = SubtitleView.OnSelectListener { selectText ->
@@ -177,12 +234,12 @@ class StudyActivity : AppCompatActivity(),AudioStudyMvpView {
     }
 
     override fun onDetailsLoaded(details: MutableList<HeadlineDetail>) {
-        val mode = if (subtitle.getShowCHN()) ChForeignSubtitle.ShowMode.DOUBLE_FOREIGN_ABOVE else ChForeignSubtitle.ShowMode.FOREIGN_ONLY
+        val mode = if (subtitle.showCHN) ChForeignSubtitle.ShowMode.DOUBLE_FOREIGN_ABOVE else ChForeignSubtitle.ShowMode.FOREIGN_ONLY
         val subtitles = Util.transform(details, mode)
-        subtitle.setSubtitles(subtitles)
+        subtitle.subtitles=(subtitles)
         subtitle.refreshContentViews()
-        if (HeadlineType.SONG.equals(type)) {
-            subtitle.setShowCHN(false)
+        if (HeadlineType.SONG == type) {
+            subtitle.showCHN=(false)
         }
     }
 
@@ -206,8 +263,9 @@ class StudyActivity : AppCompatActivity(),AudioStudyMvpView {
         AlertDialog.Builder(mContext)
                 .setTitle("Error")
                 .setMessage(message)
-                .setPositiveButton("确定") { dialog, which -> dialog.dismiss() }
-                .setOnDismissListener { finish() }
+                .setNegativeButton("取消",null)
+                .setPositiveButton("确定") { dialog, _ -> dialog.dismiss() }
+                //.setOnDismissListener { finish() }
                 .create()
                 .show()
     }

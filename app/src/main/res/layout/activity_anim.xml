@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".test1.AnimActivity">
+    tools:context=".test1.AnimActivity"
+    android:orientation="vertical">
+     <!-- app:lottie_fileName="bird-flying.json"-->
 
     <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         app:lottie_loop="true"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="flame-animation.json"
+        app:lottie_url="https://assets9.lottiefiles.com/packages/lf20_7vN1Lt.json"
+        app:lottie_speed="5.0"
+        android:background="#000000"
         android:layout_gravity="center"/>
-</FrameLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="landscape.json"
+        android:layout_gravity="center"/>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_number"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_url="https://assets9.lottiefiles.com/packages/lf20_LkipNu.json"
+        android:layout_gravity="center"/>
+</LinearLayout>

@@ -9,13 +9,9 @@ import timber.log.Timber
 
 class AudioStudyPresenter : BasePresenter<AudioStudyMvpView>() {
 
-    private val mDataManager: DataManager
+    private val mDataManager: DataManager = DataManager.instance
 
     private var mDetailDisposable: Disposable? = null
-
-    init {
-        mDataManager = DataManager.instance
-    }
 
     override fun detachView() {
         super.detachView()

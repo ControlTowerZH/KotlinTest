@@ -41,8 +41,9 @@
                 android:layout_width="?android:attr/actionBarSize"
                 android:layout_height="?android:attr/actionBarSize"
                 android:scaleType="center"
-                android:visibility="gone"
-                tools:visibility="visible"/>
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:src="@drawable/headline_type_all"/>
         </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
@@ -156,7 +157,6 @@
 
                 <RelativeLayout
                     android:layout_width="0dp"
-
                     android:layout_height="match_parent"
                     android:layout_weight="1">
 
