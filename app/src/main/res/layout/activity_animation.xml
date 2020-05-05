@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_evening"
+    tools:context=".test1.AnimationActivity"
+    android:id="@+id/fl_home_bg">
+
+
+    <FrameLayout
+        android:id="@+id/fl_top"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@drawable/shape_gradient_black_top">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Top"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/shape_gradient_black_bottom">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bottom"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_left"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:background="@drawable/shape_gradient_black_left">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Left"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_right"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="@drawable/shape_gradient_black_right">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Right"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+    </FrameLayout>
+</FrameLayout>

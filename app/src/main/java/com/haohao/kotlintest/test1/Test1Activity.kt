@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.haohao.kotlintest.MainListActivity
 import com.haohao.kotlintest.R
 import kotlinx.android.synthetic.main.activity_test1.*
 
@@ -52,7 +51,10 @@ class Test1Activity : AppCompatActivity() {
         }
         tv_flame.setOnClickListener {
             startActivity(Intent(Test1Activity@this, AnimActivity::class.java))
+        }
 
+        tv_animation.setOnClickListener{
+            startActivity(Intent(Test1Activity@this, AnimationActivity::class.java))
         }
     }
 

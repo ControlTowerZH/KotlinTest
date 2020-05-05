@@ -53,5 +53,6 @@
 
     <color name="headline_item_small_title_color">#343434</color>
     <color name="default_font_gray">#666666</color>
+    <color name="transparent">#00000000</color>
 
 </resources>

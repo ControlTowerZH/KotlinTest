@@ -30,7 +30,7 @@
         android:layout_marginTop="10dp"
         android:layout_below="@id/tv_main"
         android:layout_centerHorizontal="true"
-        android:text="Test1"
+        android:text="Animation"
         style="@style/testText"/>
 
     <TextView
