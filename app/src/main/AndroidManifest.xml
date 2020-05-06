@@ -27,7 +27,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:overrideLibrary="tv.danmaku.ijk.media.player_arm64">
-        <activity android:name=".test1.AnimationActivity"></activity>
+        <activity android:name=".test1.MoveActivity"></activity>
+        <activity android:name=".test1.JavaActivity" />
+        <activity android:name=".test1.AnimationActivity" />
         <activity android:name=".test1.NumberActivity" />
         <activity android:name=".test1.AnimActivity" />
         <activity android:name=".test1.Test1Activity" />

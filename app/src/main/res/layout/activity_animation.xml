@@ -8,7 +8,6 @@
     tools:context=".test1.AnimationActivity"
     android:id="@+id/fl_home_bg">
 
-
     <FrameLayout
         android:id="@+id/fl_top"
         android:layout_width="match_parent"
@@ -67,4 +66,17 @@
             android:textColor="@color/white"
             android:textSize="20sp"/>
     </FrameLayout>
+
+    <com.haohao.kotlintest.view.MovedImageButton
+        android:id="@+id/pointMoved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:background="#00FFFFFF"
+        android:src="@drawable/headline_type_voa"
+        android:stateListAnimator="@animator/pressed_state_list"
+        tools:targetApi="lollipop" />
+
 </FrameLayout>

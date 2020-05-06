@@ -1,10 +1,20 @@
 package com.haohao.kotlintest.test1
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.PixelFormat
 import android.os.Bundle
+import android.view.Gravity
+import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnTouchListener
+import android.view.WindowManager
 import android.view.animation.Animation
+//import android.view.animation.AnimationUtils
 import android.view.animation.TranslateAnimation
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+//import com.google.android.material.animation.AnimationUtils
 import com.haohao.kotlintest.R
 import kotlinx.android.synthetic.main.activity_animation.*
 
@@ -24,6 +34,7 @@ class AnimationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animation)
 
+        createRemovedBtn()
         topUp = getUpMove()
         topDown = getUpMoveBottom()
         bottomUp = getDownMove()
@@ -60,6 +71,46 @@ class AnimationActivity : AppCompatActivity() {
                 fl_right.visibility=View.VISIBLE
             }
         }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun createRemovedBtn() {
+        val button = Button(this)
+        button.text = "移动按钮"
+        val windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val layoutParams = WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT
+                , WindowManager.LayoutParams.WRAP_CONTENT, 0, 0, PixelFormat.TRANSLUCENT)
+        layoutParams.flags = (WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                or WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED
+                or WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        layoutParams.type = WindowManager.LayoutParams.TYPE_APPLICATION
+        layoutParams.gravity = Gravity.START or Gravity.TOP
+        layoutParams.x = 200
+        layoutParams.y = 200
+        windowManager.addView(button, layoutParams)
+        button.setOnTouchListener(object : OnTouchListener {
+            var lastX = 0
+            var lastY = 0
+            override fun onTouch(v: View, event: MotionEvent): Boolean {
+                val rawX = event.rawX.toInt()
+                val rawY = event.rawY.toInt()
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        lastX = rawX
+                        lastY = rawY
+                    }
+                    MotionEvent.ACTION_MOVE -> {
+                        layoutParams.x += rawX - lastX
+                        layoutParams.y += rawY - lastY
+                        windowManager.updateViewLayout(v, layoutParams)
+                        lastX = rawX
+                        lastY = rawY
+                    }
+                }
+                return true
+            }
+        })
     }
 
 

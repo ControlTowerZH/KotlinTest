@@ -12,10 +12,21 @@ import timber.log.Timber
  * @date 2020/2/9
  */
 
-class KotlinApplication : Application(){
+class KotlinApplication : Application() {
+
+    companion object {
+        var mKotlinApplication: KotlinApplication? = null
+
+        fun getApplication(): Application {
+            return mKotlinApplication!!
+        }
+    }
 
     override fun onCreate() {
         super.onCreate()
+
+        mKotlinApplication = this
+
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
@@ -23,4 +34,6 @@ class KotlinApplication : Application(){
         CategoryDataHelper.init(applicationContext)
 
     }
+
+
 }

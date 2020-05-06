@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <set>
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime"
+                android:propertyName="scaleX" android:valueTo="1.3"
+                android:valueType="floatType" />
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime"
+                android:propertyName="scaleY" android:valueTo="1.3"
+                android:valueType="floatType" />
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime"
+                android:propertyName="alpha" android:valueTo="0.6"
+                android:valueType="floatType" />
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime"
+                android:propertyName="translationZ" android:valueTo="2"
+                android:valueType="intType"/>
+        </set>
+    </item>
+
+    <item android:state_pressed="false">
+        <set>
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime"
+                android:propertyName="scaleX" android:valueTo="1.0"
+                android:valueType="floatType" />
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime"
+                android:propertyName="scaleY" android:valueTo="1.0"
+                android:valueType="floatType" />
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime"
+                android:propertyName="alpha" android:valueTo="1.0"
+                android:valueType="floatType" />
+            <objectAnimator android:duration="@android:integer/config_shortAnimTime"
+                android:propertyName="translationZ" android:valueTo="1"
+                android:valueType="intType"/>
+        </set>
+    </item>
+</selector>
