@@ -3,6 +3,7 @@ package com.haohao.kotlintest
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.haohao.kotlintest.java.BindingActivity
 import com.haohao.kotlintest.test1.MoveActivity
 import com.haohao.kotlintest.test1.Test1Activity
 import com.haohao.kotlintest.util.ToastUtils
@@ -30,7 +31,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(MainActivity@this, MoveActivity::class.java))
         }
         tv_test3.setOnClickListener {
-            ToastUtils.showShort(baseContext,"tv_test3")
+            //ToastUtils.showShort(baseContext,"tv_test3")
+            startActivity(Intent(MainActivity@this, BindingActivity::class.java))
         }
     }
 }
