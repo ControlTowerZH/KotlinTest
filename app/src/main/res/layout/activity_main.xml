@@ -9,48 +9,54 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         android:layout_centerHorizontal="true"
-        android:textSize="18sp"
-       />
+        android:text="Hello World!"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_main"
+        style="@style/testText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
-        android:text="进入主界面"
-        style="@style/testText"/>
+        android:layout_marginTop="30dp"
+        android:text="进入主界面" />
 
-    <TextView
-        android:id="@+id/tv_test1"
-        android:layout_width="wrap_content"
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_below="@id/tv_main"
         android:layout_centerHorizontal="true"
-        android:text="Animation"
-        style="@style/testText"/>
+        android:layout_marginTop="5dp"
+        app:flexWrap="wrap">
 
-    <TextView
-        android:id="@+id/tv_test2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/tv_test1"
-        android:layout_centerHorizontal="true"
-        android:text="MOVE"
-        style="@style/testText"/>
+        <TextView
+            android:id="@+id/tv_test1"
+            style="@style/testText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Animation" />
 
-    <TextView
-        android:id="@+id/tv_test3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/tv_test2"
-        android:layout_centerHorizontal="true"
-        android:text="Test3"
-        style="@style/testText"/>
+        <TextView
+            android:id="@+id/tv_test2"
+            style="@style/testText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MOVE" />
+
+        <TextView
+            android:id="@+id/tv_test3"
+            style="@style/testText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test3" />
+
+        <Button
+            android:id="@+id/btn_viewPager"
+            style="@style/testText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ViewPager2" />
+    </com.google.android.flexbox.FlexboxLayout>
 
 </RelativeLayout>

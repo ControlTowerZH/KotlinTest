@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_evening"
     tools:context=".test1.AnimationActivity"
+    tools:viewBindingIgnore="true"
     android:id="@+id/fl_home_bg">
 
     <FrameLayout

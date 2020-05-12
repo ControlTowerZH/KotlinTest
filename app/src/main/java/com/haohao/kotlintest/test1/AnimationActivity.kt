@@ -10,11 +10,9 @@ import android.view.View
 import android.view.View.OnTouchListener
 import android.view.WindowManager
 import android.view.animation.Animation
-//import android.view.animation.AnimationUtils
 import android.view.animation.TranslateAnimation
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-//import com.google.android.material.animation.AnimationUtils
 import com.haohao.kotlintest.R
 import kotlinx.android.synthetic.main.activity_animation.*
 
