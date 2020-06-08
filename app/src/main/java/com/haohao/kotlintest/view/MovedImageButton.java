@@ -12,6 +12,9 @@ import com.haohao.kotlintest.util.SizeUtils;
 
 import androidx.appcompat.widget.AppCompatImageButton;
 
+/**
+ * 自定义拖拽按钮
+ */
 public class MovedImageButton extends AppCompatImageButton {
 
     private int lastX;
@@ -37,20 +40,28 @@ public class MovedImageButton extends AppCompatImageButton {
         screenWidth = dm.widthPixels;
     }
 
+    /**
+     * 重写触摸事件方法
+     * @param event 触摸事件
+     * @return boolean
+     */
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        //触摸事件每次返回的横纵坐标
         int x = (int) event.getX();
         int y = (int) event.getY();
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                //按下时的横纵坐标
                 lastX = x;
                 lastY = y;
                 break;
             case MotionEvent.ACTION_MOVE:
+                //移动的距离
                 int offsetX = x - lastX;
                 int offsetY = y - lastY;
-                //第一种方法
+                //第一种方法 移动位置
                 layout(getLeft() + offsetX,
                         getTop() + offsetY,
                         getRight() + offsetX,

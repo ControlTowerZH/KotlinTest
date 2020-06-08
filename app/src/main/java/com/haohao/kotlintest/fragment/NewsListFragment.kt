@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.haohao.kotlintest.R
@@ -126,7 +125,6 @@ class NewsListFragment : Fragment(),NewsListMvpView{
         }
 
     }
-
 
     override fun setRecyclerEndless(isEndless: Boolean) {
         recyclerView.endless = isEndless
