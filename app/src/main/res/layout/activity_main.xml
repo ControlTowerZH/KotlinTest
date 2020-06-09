@@ -52,6 +52,13 @@
             android:text="Test3" />
 
         <Button
+            android:id="@+id/btn_single"
+            style="@style/testText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Single" />
+
+        <Button
             android:id="@+id/btn_viewPager"
             style="@style/testText"
             android:layout_width="wrap_content"

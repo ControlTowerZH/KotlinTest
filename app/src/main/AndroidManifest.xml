@@ -27,7 +27,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:overrideLibrary="tv.danmaku.ijk.media.player_arm64">
-        <activity android:name=".viewpage2.ViewPager2Activity"></activity>
+        <activity android:name=".intentTest.DialogThemeActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.Dialog"/>
+        <activity
+            android:name=".intentTest.SingleTaskActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".viewpage2.ViewPager2Activity" />
         <activity android:name=".java.BindingActivity" />
         <activity android:name=".test1.MoveActivity" />
         <activity android:name=".test1.JavaActivity" />

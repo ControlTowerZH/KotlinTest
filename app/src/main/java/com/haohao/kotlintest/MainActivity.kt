@@ -3,6 +3,7 @@ package com.haohao.kotlintest
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.haohao.kotlintest.intentTest.SingleTaskActivity
 import com.haohao.kotlintest.java.BindingActivity
 import com.haohao.kotlintest.test1.MoveActivity
 import com.haohao.kotlintest.test1.Test1Activity
@@ -33,6 +34,11 @@ class MainActivity : AppCompatActivity() {
         tv_test3.setOnClickListener {
             //ToastUtils.showShort(baseContext,"tv_test3")
             startActivity(Intent(MainActivity@this, BindingActivity::class.java))
+        }
+
+        btn_single.setOnClickListener {
+            startActivity(Intent(MainActivity@this, SingleTaskActivity::class.java))
+
         }
 
         btn_viewPager.setOnClickListener {
