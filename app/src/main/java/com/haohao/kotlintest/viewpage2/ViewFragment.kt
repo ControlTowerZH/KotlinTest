@@ -42,7 +42,7 @@ class ViewFragment : Fragment() {
             3 -> "https://assets4.lottiefiles.com/packages/lf20_7nsIIO.json"
             4 -> "https://assets4.lottiefiles.com/packages/lf20_kgmaoC.json"
             else -> {
-                "https://assets4.lottiefiles.com/packages/lf20_DEcXxG.json";
+                "https://assets4.lottiefiles.com/packages/lf20_DEcXxG.json"
             }
         }
         lottie.setAnimationFromUrl(animUrl)

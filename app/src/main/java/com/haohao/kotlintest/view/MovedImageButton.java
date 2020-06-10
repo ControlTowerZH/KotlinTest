@@ -61,7 +61,7 @@ public class MovedImageButton extends AppCompatImageButton {
                 //移动的距离
                 int offsetX = x - lastX;
                 int offsetY = y - lastY;
-                //第一种方法 移动位置
+                //第一种方法 移动位置 getLeft getRight 是控件左右边 相对于父控件左侧的距离
                 layout(getLeft() + offsetX,
                         getTop() + offsetY,
                         getRight() + offsetX,
@@ -71,6 +71,7 @@ public class MovedImageButton extends AppCompatImageButton {
                 //offsetTopAndBottom(offsetY);
                 break;
             case MotionEvent.ACTION_UP:
+                //触摸点相对于屏幕距离
                 adsorbAnim(event.getRawX(), event.getRawY());
                 break;
         }
@@ -84,7 +85,7 @@ public class MovedImageButton extends AppCompatImageButton {
                     .setInterpolator(new OvershootInterpolator())
                     .yBy(-getY() )//- getHeight() / 2.0f
                     .start();
-        } else if (rawX >= screenWidth / 2) {//靠右吸附
+        } else if (rawX >= screenWidth / 2) {//靠右吸附 属性动画
             animate().setDuration(400)
                     .setInterpolator(new OvershootInterpolator())
                     .xBy(screenWidth - getX() - getWidth() / 1.0f)

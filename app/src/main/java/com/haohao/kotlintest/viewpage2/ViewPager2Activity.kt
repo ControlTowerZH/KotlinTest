@@ -32,9 +32,8 @@ class ViewPager2Activity : AppCompatActivity() {
         }
         viewPage2.currentItem = 0
         viewPage2.offscreenPageLimit = 3
-
-        viewPage2.offscreenPageLimit = fragments.size - 1
         //viewPage2.isUserInputEnabled = false
+        //新的tabLayout, 比原来的好用 更加清晰明了
         TabLayoutMediator(
                 tabs,
                 viewPage2,

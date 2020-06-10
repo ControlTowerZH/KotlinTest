@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 //FragmentStatePagerAdapter 适用于大量页面，不保存状态
 //FragmentStateAdapter替换了原来的 FragmentStatePagerAdapter
-//RecyclerView.Adapter替换了原来的 PagerAdapter
+//RecyclerView.Adapter替换了原来的 FragmentPagerAdapter
 //registerOnPageChangeCallback替换了原来的 addPageChangeListener
 //
 //作者：走在冷风中吧

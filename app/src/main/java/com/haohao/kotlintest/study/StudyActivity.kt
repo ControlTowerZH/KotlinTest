@@ -201,7 +201,6 @@ class StudyActivity : AppCompatActivity(),AudioStudyMvpView {
 //        true
 //    })
 
-
     private val mSubtitleSelectListener = SubtitleView.OnSelectListener { selectText ->
         var selectText = selectText
         Timber.d("Selected text: %s", selectText)
