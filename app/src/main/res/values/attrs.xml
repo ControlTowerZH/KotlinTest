@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BaseTitleBar">
+        <attr name="bt_background" format="reference"/>
+        <attr name="bt_title" format="string"/>
+        <attr name="bt_title_color" format="color"/>
+        <attr name="bt_title_size" format="dimension"/>
+        <attr name="bt_show_more" format="boolean"/>
+    </declare-styleable>
+</resources>

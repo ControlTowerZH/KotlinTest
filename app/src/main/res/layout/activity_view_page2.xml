@@ -6,7 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".viewpage2.ViewPager2Activity">
 
-
+    <com.haohao.kotlintest.widget.BaseTitleBar
+        android:id="@+id/base_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bt_show_more="true"
+        app:layout_constraintTop_toTopOf="parent" />
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
         android:layout_width="0dp"
@@ -15,7 +20,7 @@
         android:theme="@style/Widget.Design.TabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/base_title"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@android:color/white"
         app:tabTextColor="@color/white"
