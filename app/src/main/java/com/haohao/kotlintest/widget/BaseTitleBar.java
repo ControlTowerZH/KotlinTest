@@ -60,6 +60,7 @@ public class BaseTitleBar extends RelativeLayout {
     public BaseTitleBar(Context context,AttributeSet attrs,int defStyleAttr){
         super(context,attrs,defStyleAttr);
 
+        //这里调用的typeArray.recycle 并不起出作用， 上一个构造方法已经调用此方法了，按理来说应该生效的
         TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.BaseTitleBar);
         mBackground = typedArray.getResourceId(R.styleable.BaseTitleBar_bt_background,R.color.colorPrimary);
         mTitle = typedArray.getString(R.styleable.BaseTitleBar_bt_title);
