@@ -3,6 +3,7 @@ package com.haohao.kotlintest
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.haohao.kotlintest.function.ContainsActivity
 import com.haohao.kotlintest.function.NotifyActivity
 import com.haohao.kotlintest.function.mailList.MailListActivity
 import com.haohao.kotlintest.intentTest.SingleTaskActivity
@@ -52,6 +53,9 @@ class MainActivity : AppCompatActivity() {
         }
         btn_notify.setOnClickListener {
             startActivity(Intent(MainActivity@this, NotifyActivity::class.java))
+        }
+        btn_okHttp.setOnClickListener {
+            ContainsActivity.start(baseContext,ContainsActivity.FRAGMENT_OK_HTTP)
         }
     }
 }
