@@ -18,6 +18,9 @@ import com.haohao.kotlintest.test1.AnimationActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
+/**
+ * 测试应用通知通知
+ */
 public class NotifyActivity extends AppCompatActivity {
 
     private Context mContext;
@@ -51,10 +54,10 @@ public class NotifyActivity extends AppCompatActivity {
                 .setWhen(System.currentTimeMillis())
                 .setSmallIcon(R.drawable.headline_type_bbc)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.ic_icon))
-                .setStyle(new NotificationCompat.BigTextStyle().bigText("我有好多好多话要说，我有好多问题想问。" +
-                        "我有好多好多话要说，我有好多问题想问。我有好多好多话要说，我有好多问题想问。" +
-                        "我有好多好多话要说，我有好多问题想问。我有好多好多话要说，我有好多问题想问。"))
-                .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.ic_timg)))
+                //.setStyle(new NotificationCompat.BigTextStyle().bigText("我有好多好多话要说，我有好多问题想问。" +
+                //        "我有好多好多话要说，我有好多问题想问。我有好多好多话要说，我有好多问题想问。" +
+                //        "我有好多好多话要说，我有好多问题想问。我有好多好多话要说，我有好多问题想问。"))
+                //.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.ic_timg)))
                 .setLights(Color.GREEN,1000,1000)
                 .setVibrate(new long[]{0,1000,1000,1000})
                 .setPriority(NotificationCompat.PRIORITY_MAX)//最高等级通知

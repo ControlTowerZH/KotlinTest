@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.haohao.kotlintest.function.NotifyActivity
-import com.haohao.kotlintest.function.mailList.MailListActivity
+import com.haohao.kotlintest.function.MailListActivity
 import com.haohao.kotlintest.intentTest.SingleTaskActivity
 import com.haohao.kotlintest.java.BindingActivity
 import com.haohao.kotlintest.test1.MoveActivity

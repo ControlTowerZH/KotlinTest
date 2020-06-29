@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".function.mailList.MailListActivity">
+    tools:context=".function.MailListActivity">
 
     <com.haohao.kotlintest.widget.BaseTitleBar
         android:id="@+id/baseTitleBar"
