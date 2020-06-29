@@ -85,6 +85,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="okHttp" />
+
+        <Button
+            android:id="@+id/btn_design"
+            style="@style/testText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Design" />
     </com.google.android.flexbox.FlexboxLayout>
 
 </RelativeLayout>

@@ -51,8 +51,8 @@ public class OkHttpFragment extends Fragment {
         tvRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //sendRequestWithOkHttp();
-                sendRequestWithHttpURLConnection();
+                sendRequestWithOkHttp();
+                //sendRequestWithHttpURLConnection();
             }
         });
     }

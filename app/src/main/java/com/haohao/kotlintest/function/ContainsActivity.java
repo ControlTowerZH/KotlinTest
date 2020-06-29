@@ -12,8 +12,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+/**
+ * 容器Activity 包裹Fragment ,最好再实现一下 模仿Activity任务栈
+ */
 public class ContainsActivity extends AppCompatActivity {
     public static final String FRAGMENT_OK_HTTP= "okHttpFragment";
+    public static final String FRAGMENT_DESIGN= "designFragment";
     public static final String FRAGMENT_TYPE= "Fragment";
 
     public static void start(Context context,String type){
@@ -33,6 +37,9 @@ public class ContainsActivity extends AppCompatActivity {
             switch (fragmentType) {
                 case FRAGMENT_OK_HTTP:
                     replaceFragment(OkHttpFragment.newInstance());
+                    break;
+                case FRAGMENT_DESIGN:
+                    replaceFragment(DesignFragment.Companion.newInstance());
                     break;
                 default:
             }

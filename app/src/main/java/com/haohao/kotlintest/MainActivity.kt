@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(MainActivity@this,MainListActivity::class.java))
             //ToastUtils.showShort(baseContext,"ListMain")
         }
-
         tv_test1.setOnClickListener {
             startActivity(Intent(MainActivity@this, Test1Activity::class.java))
         }
@@ -38,12 +37,9 @@ class MainActivity : AppCompatActivity() {
             //ToastUtils.showShort(baseContext,"tv_test3")
             startActivity(Intent(MainActivity@this, BindingActivity::class.java))
         }
-
         btn_single.setOnClickListener {
             startActivity(Intent(MainActivity@this, SingleTaskActivity::class.java))
-
         }
-
         btn_viewPager.setOnClickListener {
             startActivity(Intent(MainActivity@this, ViewPager2Activity::class.java))
         }
@@ -56,6 +52,9 @@ class MainActivity : AppCompatActivity() {
         }
         btn_okHttp.setOnClickListener {
             ContainsActivity.start(baseContext,ContainsActivity.FRAGMENT_OK_HTTP)
+        }
+        btn_design.setOnClickListener {
+            ContainsActivity.start(baseContext,ContainsActivity.FRAGMENT_DESIGN)
         }
     }
 }
