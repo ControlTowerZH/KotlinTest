@@ -30,8 +30,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:overrideLibrary="tv.danmaku.ijk.media.player_arm64">
-        <activity android:name=".function.NotifyActivity"></activity>
-        <activity android:name=".function.MailListActivity" />
+        <activity android:name=".function.ContainsActivity"></activity>
+        <activity android:name=".function.NotifyActivity" />
+        <activity android:name=".function.mailList.MailListActivity" />
         <activity
             android:name=".intentTest.DialogThemeActivity"
             android:theme="@style/Theme.AppCompat.DayNight.Dialog" />
