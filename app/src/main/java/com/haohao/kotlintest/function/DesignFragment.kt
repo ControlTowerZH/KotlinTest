@@ -29,12 +29,19 @@ class DesignFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tv_snack.setOnClickListener {
+
+        fl_btn.setOnClickListener {
             Snackbar.make(view,"一个snackBar",Snackbar.LENGTH_SHORT)
                     .setAction("action") {
                         Snackbar.make(view,"Action 点击",Snackbar.LENGTH_SHORT).show()
                     }.show()
         }
+
+        var textContext = "举杯邀明月，对饮成三人。"
+        while (textContext.length<500){
+            textContext += textContext;
+        }
+        tv_context.text = textContext
     }
 
 }

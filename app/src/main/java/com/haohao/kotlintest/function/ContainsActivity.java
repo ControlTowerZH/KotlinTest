@@ -44,6 +44,7 @@ public class ContainsActivity extends AppCompatActivity {
                 default:
             }
         }
+
     }
 
     private void replaceFragment(Fragment fragment){
