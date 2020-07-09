@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import timber.log.Timber;
 
 /**
  * 容器Activity 包裹Fragment ,最好再实现一下 模仿Activity任务栈
@@ -52,5 +53,9 @@ public class ContainsActivity extends AppCompatActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fl_fragment,fragment);
         transaction.commit();
+    }
+
+    private void setBranch(){
+        Timber.d("this is other branch");
     }
 }
