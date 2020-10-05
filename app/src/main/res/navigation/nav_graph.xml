@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dataBindingFragment">
+    <fragment
+        android:id="@+id/dataBindingFragment"
+        android:name="com.haohao.kotlintest.fragment.DataBindingFragment"
+        android:label="fragment_data_binding"
+        tools:layout="@layout/fragment_data_binding" >
+
+        <action
+            android:id="@+id/action_dataBindingFragment_to_designFragment"
+            app:destination="@id/designFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/designFragment"
+        android:name="com.haohao.kotlintest.function.DesignFragment"
+        android:label="fragment_design"
+        tools:layout="@layout/fragment_design" >
+        <argument android:name="name" android:defaultValue="Max"/>
+    </fragment>
+</navigation>

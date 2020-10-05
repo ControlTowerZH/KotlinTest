@@ -23,4 +23,13 @@
         android:text="进入个Dialog theme Activity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/btn_interface"
+        style="@style/testText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创建Interface"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_to_dialog" />
 </androidx.constraintlayout.widget.ConstraintLayout>

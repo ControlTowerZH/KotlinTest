@@ -3,9 +3,9 @@ package com.haohao.kotlintest
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.haohao.kotlintest.function.ContainsActivity
-import com.haohao.kotlintest.function.NotifyActivity
-import com.haohao.kotlintest.function.MailListActivity
+import com.haohao.kotlintest.function.*
+import com.haohao.kotlintest.function.ContainsActivity.FRAGMENT_DESIGN
+import com.haohao.kotlintest.function.mvvm.MVVMActivity
 import com.haohao.kotlintest.intentTest.SingleTaskActivity
 import com.haohao.kotlintest.java.BindingActivity
 import com.haohao.kotlintest.test1.MoveActivity
@@ -14,7 +14,7 @@ import com.haohao.kotlintest.viewpage2.ViewPager2Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
+    //var 可变  val 不可变
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -55,6 +55,18 @@ class MainActivity : AppCompatActivity() {
         }
         btn_design.setOnClickListener {
             ContainsActivity.start(baseContext,ContainsActivity.FRAGMENT_DESIGN)
+        }
+        btn_navigation.setOnClickListener {
+            startActivity(Intent(MainActivity@this, NavigationActivity::class.java))
+        }
+        btn_mvvm.setOnClickListener {
+            startActivity(Intent(MainActivity@this,MVVMActivity::class.java))
+        }
+        btn_my_process.setOnClickListener {
+            startActivity(Intent(MainActivity@this,ProcessActivity::class.java))
+        }
+        btn_my_view.setOnClickListener {
+            startActivity(Intent(MainActivity@this,MyViewActivity::class.java))
         }
     }
 }

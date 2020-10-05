@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.haohao.kotlintest.R
+import com.haohao.kotlintest.util.ToastUtils
+import com.haohao.kotlintest.util.ToastUtils.showShort
 import kotlinx.android.synthetic.main.fragment_design.*
 
 /**
@@ -22,6 +24,9 @@ class DesignFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        arguments?.getString("name")?.let {
+            //ToastUtils.showShort(this, "hello$it")
+        }
         return inflater.inflate(R.layout.fragment_design, container, false)
     }
 

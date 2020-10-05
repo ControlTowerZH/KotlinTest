@@ -12,11 +12,21 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+
 import com.haohao.kotlintest.R;
 import com.haohao.kotlintest.test1.AnimationActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
+import static android.os.Process.THREAD_PRIORITY_AUDIO;
+import static android.os.Process.THREAD_PRIORITY_BACKGROUND;
+import static android.os.Process.THREAD_PRIORITY_DEFAULT;
+import static android.os.Process.THREAD_PRIORITY_FOREGROUND;
+import static android.os.Process.THREAD_PRIORITY_LESS_FAVORABLE;
+import static android.os.Process.THREAD_PRIORITY_LOWEST;
+import static android.os.Process.THREAD_PRIORITY_MORE_FAVORABLE;
+import static android.os.Process.THREAD_PRIORITY_URGENT_AUDIO;
+import static android.os.Process.THREAD_PRIORITY_URGENT_DISPLAY;
 
 /**
  * 测试应用通知通知
@@ -65,5 +75,29 @@ public class NotifyActivity extends AppCompatActivity {
                 .setContentIntent(intent)
                 .build();
         manager.notify(1,notification);
+    }
+
+    class MyThread extends Thread{
+
+        @Override
+        public void run() {
+            super.run();
+            android.os.Process.setThreadPriority (THREAD_PRIORITY_DEFAULT);
+
+        }
+    }
+
+    MyThread myThread = new MyThread();
+
+    private void setThread(){
+        myThread.setPriority(THREAD_PRIORITY_DEFAULT);
+        myThread.setPriority(THREAD_PRIORITY_AUDIO);
+        myThread.setPriority(THREAD_PRIORITY_BACKGROUND);
+        myThread.setPriority(THREAD_PRIORITY_FOREGROUND);
+        myThread.setPriority(THREAD_PRIORITY_LESS_FAVORABLE);
+        myThread.setPriority(THREAD_PRIORITY_LOWEST);
+        myThread.setPriority(THREAD_PRIORITY_MORE_FAVORABLE);
+        myThread.setPriority(THREAD_PRIORITY_URGENT_AUDIO);
+        myThread.setPriority(THREAD_PRIORITY_URGENT_DISPLAY);
     }
 }

@@ -32,7 +32,9 @@ class MailListActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.btn_mail_list)
         button.setOnClickListener {
             if (ContextCompat.checkSelfPermission(context as MailListActivity, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this@MailListActivity, arrayOf(Manifest.permission.READ_CONTACTS), 1)
+                //Android 原生动态权限请求
+                ActivityCompat.requestPermissions(this@MailListActivity,
+                        arrayOf(Manifest.permission.READ_CONTACTS), 1)
             } else {
                 readContacts()
             }
@@ -45,8 +47,11 @@ class MailListActivity : AppCompatActivity() {
                     null, null, null).use { cursor ->
                 if (cursor != null) {
                     while (cursor.moveToNext()) {
-                        val displayName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
-                        val number = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                        // 通过内容提供者 获取通讯录应用的 数据
+                        val displayName = cursor.getString(
+                                cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+                        val number = cursor.getString(
+                                cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
                         mContactsList.add(displayName + "\n" + number)
                     }
                     mAdapter!!.notifyDataSetChanged()

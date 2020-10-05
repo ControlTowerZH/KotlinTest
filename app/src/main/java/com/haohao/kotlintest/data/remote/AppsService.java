@@ -8,7 +8,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import retrofit2.http.Url;
 
 public interface AppsService {
     String ENDPOINT = "http://apps.iyuba.cn/";
@@ -39,7 +38,7 @@ public interface AppsService {
                                                                 @Query("appid") String appid,
                                                                 @Query("maxid") int maxid,
                                                                 @Query("pages") int page,
-                                                                @Query("pageNum") int pageNum,
+                                                                  @Query("pageNum") int pageNum,
                                                                 @Query("parentID") int parentID);
 
 
@@ -130,8 +129,8 @@ public interface AppsService {
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(ENDPOINT)
                     .client(client)
-                    .addConverterFactory(gsonFactory)
-                    .addCallAdapterFactory(rxJavaFactory)
+                    .addConverterFactory(gsonFactory)//数据解析器
+                    .addCallAdapterFactory(rxJavaFactory) //网络请求适配器 工厂
                     .build();
             return retrofit.create(AppsService.class);
         }

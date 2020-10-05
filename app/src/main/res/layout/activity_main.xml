@@ -92,6 +92,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Design" />
+        <Button
+            android:id="@+id/btn_navigation"
+            style="@style/testText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Navigation" />
+
+        <Button
+            android:id="@+id/btn_mvvm"
+            style="@style/testText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MVVM" />
+
+        <Button
+            android:id="@+id/btn_my_process"
+            style="@style/testText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="process" />
+
+        <Button
+            android:id="@+id/btn_my_view"
+            style="@style/testText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dragView" />
     </com.google.android.flexbox.FlexboxLayout>
 
 </RelativeLayout>

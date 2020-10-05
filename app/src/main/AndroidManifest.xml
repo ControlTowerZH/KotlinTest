@@ -30,7 +30,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:overrideLibrary="tv.danmaku.ijk.media.player_arm64">
-        <activity android:name=".function.ContainsActivity"/>
+        <activity android:name=".function.MyViewActivity"></activity>
+        <activity android:name=".function.ProcessActivity" />
+        <activity android:name=".function.mvvm.MVVMActivity" />
+        <activity android:name=".function.NavigationActivity" />
+        <activity android:name=".function.ContainsActivity" />
         <activity android:name=".function.NotifyActivity" />
         <activity android:name=".function.MailListActivity" />
         <activity
@@ -60,6 +64,18 @@
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/network_security_config" />
+
+        <service
+            android:name=".function.service.ProcessService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/app_name">
+
+            <!-- android:process=":remote" -->
+            <intent-filter>
+                <action android:name="android.intent.action.RESPOND_VIA_MESSAGE" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

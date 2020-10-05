@@ -8,9 +8,9 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.animation.OvershootInterpolator;
 
-import com.haohao.kotlintest.util.SizeUtils;
-
 import androidx.appcompat.widget.AppCompatImageButton;
+
+import com.haohao.kotlintest.util.SizeUtils;
 
 /**
  * 自定义拖拽按钮
@@ -39,6 +39,7 @@ public class MovedImageButton extends AppCompatImageButton {
         DisplayMetrics dm = getResources().getDisplayMetrics();
         screenWidth = dm.widthPixels;
     }
+
 
     /**
      * 重写触摸事件方法

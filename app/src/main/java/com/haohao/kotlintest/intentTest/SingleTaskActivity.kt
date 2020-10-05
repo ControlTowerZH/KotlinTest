@@ -19,6 +19,8 @@ class SingleTaskActivity : AppCompatActivity() {
 
         Timber.d(this.localClassName)
 
+       // inter: InterfaceA =
+
         btn_to_dialog.setOnClickListener {
             startActivityForResult(Intent(this,DialogThemeActivity::class.java),requestCode)}
     }

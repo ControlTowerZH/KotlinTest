@@ -136,5 +136,8 @@
         </rules>
       </arrangement>
     </codeStyleSettings>
+    <codeStyleSettings language="kotlin">
+      <option name="KEEP_LINE_BREAKS" value="false" />
+    </codeStyleSettings>
   </code_scheme>
 </component>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+         <!--这里引用的是ViewModel而不是Model了！！！-->
+        <variable
+            name="viewModel"
+            type="com.haohao.kotlintest.function.mvvm.MVVMViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".function.mvvm.MVVMActivity">
+
+        <EditText
+            android:id="@+id/et_Account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入账户名称"
+            android:text="@={viewModel.result1}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_getAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.getData}"
+            android:text="查询账户信息"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_Account" />
+
+        <TextView
+            android:id="@+id/tv_getResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="暂未获取账户信息"
+            android:text="@{viewModel.result}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_getAccount" />
+        <TextView
+            android:id="@+id/tv_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="默认的显示的数据"
+            android:textSize="18sp"
+            android:text="@{viewModel.result1}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_getResult" />
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="400dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_default" >
+            <com.haohao.kotlintest.view.DragView
+                android:id="@+id/drag_view"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@drawable/ic_icon"
+                />
+
+        </FrameLayout>
+
+        <com.haohao.kotlintest.view.DragGroupView
+            android:layout_width="200dp"
+            android:layout_height="400dp"
+            android:layout_marginStart="200dp"
+            app:layout_constraintStart_toStartOf="@+id/frameLayout"
+            app:layout_constraintTop_toBottomOf="@+id/tv_default"
+            tools:layout_editor_absoluteY="136dp"
+            android:background="@color/red">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_icon" />
+        </com.haohao.kotlintest.view.DragGroupView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -12,7 +12,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
         viewBinding {
+            enabled = true
+        }
+        dataBinding {
             enabled = true
         }
     }
@@ -53,6 +57,9 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.media:media:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.0"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.0"
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
@@ -97,4 +104,6 @@ dependencies {
     //implementation 'com.airbnb.android:lottie:2.3.1'
     implementation 'com.airbnb.android:lottie:3.4.0'
     implementation 'com.google.android:flexbox:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
 }

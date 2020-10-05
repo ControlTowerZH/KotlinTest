@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.haohao.kotlintest.R;
 import com.haohao.kotlintest.widget.BaseTitleBar;
 
@@ -15,9 +17,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Objects;
 
-import androidx.fragment.app.Fragment;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -40,6 +40,7 @@ public class OkHttpFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ok_http, container, false);
         initView(view);
+
         return view;
     }
 
@@ -52,9 +53,11 @@ public class OkHttpFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 sendRequestWithOkHttp();
-                //sendRequestWithHttpURLConnection();
+                sendRequestWithHttpURLConnection();
             }
         });
+
+
     }
 
     private void sendRequestWithOkHttp(){
@@ -117,7 +120,7 @@ public class OkHttpFragment extends Fragment {
     }
 
     private void showResponse(String responseData) {
-        Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
+       getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 tvContext.setText(responseData);
