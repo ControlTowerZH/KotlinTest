@@ -68,5 +68,8 @@ class MainActivity : AppCompatActivity() {
         btn_my_view.setOnClickListener {
             startActivity(Intent(MainActivity@this,MyViewActivity::class.java))
         }
+        btn_cloud_view.setOnClickListener {
+            ContainsActivity.start(baseContext,ContainsActivity.FRAGMENT_CLOUD)
+        }
     }
 }

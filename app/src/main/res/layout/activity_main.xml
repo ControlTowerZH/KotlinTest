@@ -119,6 +119,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="dragView" />
+
+        <Button
+            android:id="@+id/btn_cloud_view"
+            style="@style/testText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CLOUDView" />
     </com.google.android.flexbox.FlexboxLayout>
 
 </RelativeLayout>

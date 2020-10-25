@@ -8,12 +8,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.haohao.kotlintest.R;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.haohao.kotlintest.R;
 
 /**
  * 容器Activity 包裹Fragment ,最好再实现一下 模仿Activity任务栈
@@ -21,6 +21,7 @@ import androidx.fragment.app.FragmentTransaction;
 public class ContainsActivity extends AppCompatActivity {
     public static final String FRAGMENT_OK_HTTP = "okHttpFragment";
     public static final String FRAGMENT_DESIGN = "designFragment";
+    public static final String FRAGMENT_CLOUD = "cloudFragment";
     public static final String FRAGMENT_TYPE = "Fragment";
 
     public static void start(Context context, String type) {
@@ -49,6 +50,9 @@ public class ContainsActivity extends AppCompatActivity {
                     break;
                 case FRAGMENT_DESIGN:
                     replaceFragment(DesignFragment.Companion.newInstance());
+                    break;
+                case FRAGMENT_CLOUD:
+                    replaceFragment(GranuleDemoFragment.Companion.newInstance());
                     break;
                 default:
             }

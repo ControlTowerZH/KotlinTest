@@ -1,6 +1,9 @@
 package com.haohao.kotlintest.view;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -120,5 +123,18 @@ public class DragView extends View {
             //通过重绘来不断调用computeScroll()方法
             invalidate();
         }
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+        Paint paint = new Paint();
+        paint.setColor(Color.BLUE);
+
+        paint.setStyle(Paint.Style.FILL);
+        paint.setStrokeWidth(10);
+
+        canvas.drawCircle(getWidth()/2,getHeight()/2,200,paint);
     }
 }
