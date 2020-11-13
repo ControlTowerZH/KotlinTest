@@ -7,6 +7,8 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
+import com.haohao.kotlintest.util.DensityUtil
+import timber.log.Timber
 import java.lang.Math.*
 import java.util.*
 import kotlin.properties.Delegates
@@ -18,9 +20,11 @@ import kotlin.system.measureTimeMillis
  * @author Wanderer
  * @date 2020/10/25
  */
-class DimpleView (context: Context?, attrs: AttributeSet?) : View(context, attrs){
+class DimpleView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
+
     //定义一个粒子的集合
     private var particleList = mutableListOf<Particle>()
+
     //定义画笔
     var paint = Paint()
     var centerX by Delegates.notNull<Float>()
@@ -31,8 +35,10 @@ class DimpleView (context: Context?, attrs: AttributeSet?) : View(context, attrs
     private val pathMeasure = PathMeasure()//路径，用于测量扩散圆某一处的X,Y值
     private var pos = FloatArray(2) //扩散圆上某一点的x,y
     private val tan = FloatArray(2)//扩散圆上某一点切线
+    private val radioIn = DensityUtil.dip2px(context,90f).toFloat()//260f//内部圆形的半径 178dp 是半径！！
 
     private var animator = ValueAnimator.ofFloat(0f, 1f)
+
     init {
         animator.duration = 2000
         animator.repeatCount = -1
@@ -45,17 +51,17 @@ class DimpleView (context: Context?, attrs: AttributeSet?) : View(context, attrs
 
     //跟新粒子动画
     private fun updateParticle(value: Float) {
-        particleList.forEach {particle->
-            if(particle.offset >particle.maxOffset){
-                particle.offset=0f
-                particle.speed= (random.nextInt(10)+5).toFloat()
+        particleList.forEach { particle ->
+            if (particle.offset > particle.maxOffset) {
+                particle.offset = 0f
+                particle.speed = (random.nextInt(3) + 2).toFloat()//(10) + 5)
             }
-            particle.alpha= ((1f - particle.offset / particle.maxOffset)  * 225f).toInt()
-            particle.x = (centerX+ cos(particle.angle) * (280f + particle.offset)).toFloat()
+            particle.alpha = ((1f - particle.offset / particle.maxOffset) * 225f).toInt()
+            particle.x = (centerX + cos(particle.angle) * (radioIn + particle.offset)).toFloat()
             if (particle.y > centerY) {
-                particle.y = (sin(particle.angle) * (280f + particle.offset) + centerY).toFloat()
+                particle.y = (sin(particle.angle) * (radioIn + particle.offset) + centerY).toFloat()
             } else {
-                particle.y = (centerY - sin(particle.angle) * (280f + particle.offset)).toFloat()
+                particle.y = (centerY - sin(particle.angle) * (radioIn + particle.offset)).toFloat()
             }
             particle.offset += particle.speed.toInt()
 //            if(particle.y - centerY >particle.maxOffset){
@@ -71,35 +77,34 @@ class DimpleView (context: Context?, attrs: AttributeSet?) : View(context, attrs
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        centerX= (w/2).toFloat()
-        centerY= (h/2).toFloat()
-        path.addCircle(centerX, centerY, 280f, Path.Direction.CCW)//280f
+        centerX = (w / 2).toFloat()
+        centerY = (h / 2).toFloat()
+        path.addCircle(centerX, centerY, radioIn, Path.Direction.CCW)//280f
         pathMeasure.setPath(path, false)
-       val random= Random()
-        var nextX=0f
-        var nextY=0f
-        var speed=0f //定义一个速度
-        var angle=0.0
-        var offSet=0
-        var maxOffset=0
-        for (i in 0..2000){
-             //按比例测量路径上每一点的值
-             pathMeasure.getPosTan(i / 2000f * pathMeasure.length, pos, tan)
-            nextX = pos[0]+random.nextInt(6) - 3f //X值随机偏移
-            nextY=  pos[1]+random.nextInt(6) - 3f//Y值随机偏移
+        val random = Random()
+        var nextX = 0f
+        var nextY = 0f
+        var speed = 0f //定义一个速度
+        var angle = 0.0
+        var offSet = 0
+        var maxOffset = 0
+        for (i in 0..2000) {
+            //按比例测量路径上每一点的值
+            pathMeasure.getPosTan(i / 2000f * pathMeasure.length, pos, tan)
+            nextX = pos[0] + random.nextInt(6) - 3f //X值随机偏移
+            nextY = pos[1] + random.nextInt(6) - 3f//Y值随机偏移
 //            nextX=random.nextInt((centerX*2).toInt())
 //             //初始化Y值，这里是以起始点作为最低值，最大距离作为最大值
 //             nextY= random.nextInt(400)+centerY
-             //反余弦函数可以得到角度值，是弧度
-             angle=acos(((pos[0] - centerX) / 280f).toDouble())
-             //speed= random.nextInt(10)+5 //速度从5-15不等
-            speed= random.nextInt(2) + 2f
-            offSet = random.nextInt(200)
-            maxOffset = random.nextInt(200)
+            //反余弦函数可以得到角度值，是弧度
+            angle = acos(((pos[0] - centerX) / radioIn).toDouble())
+            //speed= random.nextInt(10)+5 //速度从5-15不等
+            speed = random.nextInt(2) + 2f //速度太快
+            offSet = random.nextInt(400)//。。。。
+            maxOffset = random.nextInt(550)//设置 最大偏移距离
             particleList.add(
                     //每一个粒子的信息
-                    Particle(nextX, nextY, 2f, speed, 100,offSet.toFloat(),angle, maxOffset.toFloat())
-            )
+                    Particle(nextX, nextY, 2f, speed, 100, offSet.toFloat(), angle, maxOffset.toFloat()))
         }
         animator.start()//别忘了启动动画
     }
@@ -109,14 +114,21 @@ class DimpleView (context: Context?, attrs: AttributeSet?) : View(context, attrs
         paint.color = Color.WHITE
         paint.isAntiAlias = true
 
-        var time= measureTimeMillis {
+        val time = measureTimeMillis {
             particleList.forEach {
                 //设置画笔的透明度
-                paint.alpha=it.alpha
-                canvas!!.drawCircle(it.x,it.y,it.radius,paint)
+                paint.alpha = it.alpha
+                canvas!!.drawCircle(it.x, it.y, it.radius, paint)
             }
         }
 
-        Log.i("dimple","绘制时间$time ms")
+        val timeStr = "$time" + "绘制时间"
+        Timber.i(TAG, timeStr)
     }
 }
+
+val Any.TAG: String
+    get() {
+        val tag = javaClass.simpleName
+        return if (tag.length <= 23) tag else tag.substring(0, 23)
+    }

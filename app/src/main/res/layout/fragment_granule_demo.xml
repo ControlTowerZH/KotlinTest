@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/iv_rotate"
-        android:layout_width="178dp"
-        android:layout_height="178dp"
+        android:layout_width="172dp"
+        android:layout_height="172dp"
         android:layout_gravity="center"
         tools:src="@drawable/bg_cloud"
         android:visibility="visible"/>

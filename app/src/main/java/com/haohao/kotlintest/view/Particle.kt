@@ -1,7 +1,7 @@
 package com.haohao.kotlintest.view
 
 /**
- * Description : 说明 Particle 粒子
+ * Description : 说明 Particle 粒子.每一个粒子的信息，是粒子的半径，粒子的速度
  *
  * @author Wanderer
  * @date 2020/10/25
@@ -12,7 +12,7 @@ class Particle {
     var radius:Float=0F//半径
     var speed:Float=0F//速度
     var alpha: Int=0//透明度
-    var maxOffset:Float=300f//最大移动距离
+    var maxOffset:Float=500f//最大移动距离
     var offset:Float=0f//当前移动距离
     var angle:Double= 0.0//粒子角度
     //主函数
