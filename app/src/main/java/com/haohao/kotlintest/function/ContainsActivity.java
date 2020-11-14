@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.haohao.kotlintest.R;
+import com.haohao.kotlintest.functionmotion.GranuleDemoFragment;
 
 /**
  * 容器Activity 包裹Fragment ,最好再实现一下 模仿Activity任务栈
@@ -22,6 +23,7 @@ public class ContainsActivity extends AppCompatActivity {
     public static final String FRAGMENT_OK_HTTP = "okHttpFragment";
     public static final String FRAGMENT_DESIGN = "designFragment";
     public static final String FRAGMENT_CLOUD = "cloudFragment";
+    public static final String FRAGMENT_ANIMATE = "animateFragment";
     public static final String FRAGMENT_TYPE = "Fragment";
 
     public static void start(Context context, String type) {
@@ -53,6 +55,9 @@ public class ContainsActivity extends AppCompatActivity {
                     break;
                 case FRAGMENT_CLOUD:
                     replaceFragment(GranuleDemoFragment.Companion.newInstance());
+                    break;
+                case FRAGMENT_ANIMATE:
+                    replaceFragment(AnimateFragment.Companion.newInstance("",""));
                     break;
                 default:
             }

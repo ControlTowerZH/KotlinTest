@@ -71,5 +71,8 @@ class MainActivity : AppCompatActivity() {
         btn_cloud_view.setOnClickListener {
             ContainsActivity.start(baseContext,ContainsActivity.FRAGMENT_CLOUD)
         }
+        btn_animate.setOnClickListener{
+            ContainsActivity.start(baseContext,ContainsActivity.FRAGMENT_ANIMATE)
+        }
     }
 }

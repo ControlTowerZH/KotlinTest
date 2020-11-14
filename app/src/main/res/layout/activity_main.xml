@@ -126,6 +126,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CLOUDView" />
+
+        <Button
+            android:id="@+id/btn_animate"
+            style="@style/testText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="animateView" />
     </com.google.android.flexbox.FlexboxLayout>
 
 </RelativeLayout>
