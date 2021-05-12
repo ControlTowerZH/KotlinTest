@@ -3,6 +3,7 @@ package com.haohao.kotlintest
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.haohao.kotlintest.data.model.DragTest
 import com.haohao.kotlintest.function.*
 import com.haohao.kotlintest.function.ContainsActivity.FRAGMENT_DESIGN
 import com.haohao.kotlintest.function.mvvm.MVVMActivity
@@ -12,8 +13,13 @@ import com.haohao.kotlintest.test1.MoveActivity
 import com.haohao.kotlintest.test1.Test1Activity
 import com.haohao.kotlintest.viewpage2.ViewPager2Activity
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+    @Inject
+    lateinit var dragTest : dagger.Lazy<DragTest>
+
+
     //var 可变  val 不可变
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

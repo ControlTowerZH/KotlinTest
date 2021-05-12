@@ -4,7 +4,6 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import android.view.animation.LinearInterpolator
 import com.haohao.kotlintest.util.DensityUtil
@@ -51,6 +50,7 @@ class DimpleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
 
     //跟新粒子动画
     private fun updateParticle(value: Float) {
+        //value
         particleList.forEach { particle ->
             if (particle.offset > particle.maxOffset) {
                 particle.offset = 0f
@@ -59,7 +59,7 @@ class DimpleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
             particle.alpha = ((1f - particle.offset / particle.maxOffset) * 225f).toInt()
             particle.x = (centerX + cos(particle.angle) * (radioIn + particle.offset)).toFloat()
             if (particle.y > centerY) {
-                particle.y = (sin(particle.angle) * (radioIn + particle.offset) + centerY).toFloat()
+                particle.y = (kotlin.math.sin(particle.angle) * (radioIn + particle.offset) + centerY).toFloat()
             } else {
                 particle.y = (centerY - sin(particle.angle) * (radioIn + particle.offset)).toFloat()
             }
@@ -82,12 +82,12 @@ class DimpleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         path.addCircle(centerX, centerY, radioIn, Path.Direction.CCW)//280f
         pathMeasure.setPath(path, false)
         val random = Random()
-        var nextX = 0f
-        var nextY = 0f
-        var speed = 0f //定义一个速度
-        var angle = 0.0
-        var offSet = 0
-        var maxOffset = 0
+        var nextX: Float
+        var nextY: Float
+        var speed: Float //定义一个速度
+        var angle: Double
+        var offSet: Int
+        var maxOffset: Int
         for (i in 0..2000) {
             //按比例测量路径上每一点的值
             pathMeasure.getPosTan(i / 2000f * pathMeasure.length, pos, tan)

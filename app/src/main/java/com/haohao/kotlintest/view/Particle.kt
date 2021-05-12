@@ -12,7 +12,7 @@ class Particle {
     var radius:Float=0F//半径
     var speed:Float=0F//速度
     var alpha: Int=0//透明度
-    var maxOffset:Float=500f//最大移动距离
+    var maxOffset:Float=500f//最大移动距离 此处设置的无效
     var offset:Float=0f//当前移动距离
     var angle:Double= 0.0//粒子角度
     //主函数

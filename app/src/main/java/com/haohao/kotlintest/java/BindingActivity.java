@@ -5,13 +5,19 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
+import com.haohao.kotlintest.data.model.DragTest;
 import com.haohao.kotlintest.databinding.ActivityBindingBinding;
 import com.haohao.kotlintest.util.InterfaceA;
 import com.haohao.kotlintest.util.liveDataBus.LiveDataBus;
 
+import javax.inject.Inject;
+
 public class BindingActivity extends AppCompatActivity {
 
     private ActivityBindingBinding viewBinding;
+
+    //@Inject
+    public DragTest dragTest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +27,8 @@ public class BindingActivity extends AppCompatActivity {
         setContentView(viewBinding.getRoot());
         viewBinding.textView.setText("这是viewBinding");
         viewBinding.tvTextDiao.setText("朝辞白帝彩云间");
+
+        dragTest.setString("sdfsd");
 
         //viewBinding.btnLiveDataSend.performClick(); 执行点击
         viewBinding.btnLiveDataSend.setOnClickListener(v -> {
