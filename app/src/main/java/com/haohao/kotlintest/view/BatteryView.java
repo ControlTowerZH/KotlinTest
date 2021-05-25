@@ -52,7 +52,7 @@ public class BatteryView extends View {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setDither(true); //设置防抖动
         mPaint.setColor(Color.parseColor("#000000"));
-        mPaint.setStyle(Paint.Style.FILL);//实心
+        mPaint.setStyle(Paint.Style.FILL);//实心(length - farLen) / 2
         mShader = new LinearGradient(0, 0, 600, 600,
                 new int[]{0xff778899, 0xffcdcdcd},
                 null, Shader.TileMode.CLAMP);
