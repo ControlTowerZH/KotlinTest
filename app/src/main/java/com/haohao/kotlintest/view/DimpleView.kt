@@ -123,7 +123,7 @@ class DimpleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
         }
 
         val timeStr = "$time" + "绘制时间"
-        Timber.i(TAG, timeStr)
+        //Timber.i(TAG, timeStr)
     }
 }
 
