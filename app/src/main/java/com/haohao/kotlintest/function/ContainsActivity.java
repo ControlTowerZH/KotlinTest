@@ -24,6 +24,7 @@ public class ContainsActivity extends AppCompatActivity {
     public static final String FRAGMENT_DESIGN = "designFragment";
     public static final String FRAGMENT_CLOUD = "cloudFragment";
     public static final String FRAGMENT_ANIMATE = "animateFragment";
+    public static final String FRAGMENT_BATTERY = "batteryFragment";
     public static final String FRAGMENT_TYPE = "Fragment";
 
     public static void start(Context context, String type) {
@@ -60,6 +61,9 @@ public class ContainsActivity extends AppCompatActivity {
                     break;
                 case FRAGMENT_ANIMATE:
                     replaceFragment(AnimateFragment.Companion.newInstance("",""));
+                    break;
+                case FRAGMENT_BATTERY:
+                    replaceFragment(BatteryFragment.Companion.newInstance());
                     break;
                 default:
             }

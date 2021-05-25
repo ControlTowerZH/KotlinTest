@@ -92,6 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Design" />
+
         <Button
             android:id="@+id/btn_navigation"
             style="@style/testText"
@@ -133,6 +134,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="animateView" />
+
+        <Button
+            android:id="@+id/btn_battery"
+            style="@style/testText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="batteryView" />
     </com.google.android.flexbox.FlexboxLayout>
 
 </RelativeLayout>

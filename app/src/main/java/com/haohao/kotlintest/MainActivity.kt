@@ -80,5 +80,9 @@ class MainActivity : AppCompatActivity() {
         btn_animate.setOnClickListener{
             ContainsActivity.start(baseContext,ContainsActivity.FRAGMENT_ANIMATE)
         }
+        btn_battery.setOnClickListener{
+            ContainsActivity.start(baseContext,ContainsActivity.FRAGMENT_BATTERY)
+        }
+
     }
 }
