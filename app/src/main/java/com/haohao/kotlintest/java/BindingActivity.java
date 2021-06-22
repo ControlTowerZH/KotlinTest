@@ -1,6 +1,7 @@
 package com.haohao.kotlintest.java;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -15,8 +16,9 @@ import javax.inject.Inject;
 public class BindingActivity extends AppCompatActivity {
 
     private ActivityBindingBinding viewBinding;
+    private static final String TAG = "BindingActivity";
 
-    //@Inject
+    @Inject
     public DragTest dragTest;
 
     @Override
@@ -28,7 +30,11 @@ public class BindingActivity extends AppCompatActivity {
         viewBinding.textView.setText("这是viewBinding");
         viewBinding.tvTextDiao.setText("朝辞白帝彩云间");
 
-        dragTest.setString("sdfsd");
+        if (dragTest!=null) {
+            dragTest.setString("sdfsd");
+        }else {
+            Log.e(TAG,"dragTest is null");
+        }
 
         //viewBinding.btnLiveDataSend.performClick(); 执行点击
         viewBinding.btnLiveDataSend.setOnClickListener(v -> {
