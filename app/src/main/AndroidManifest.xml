@@ -69,9 +69,8 @@
             android:name=".function.service.ProcessService"
             android:enabled="true"
             android:exported="true"
-            android:label="@string/app_name">
-
-            <!-- android:process=":remote" -->
+            android:label="@string/app_name"
+            android:process=":remote">
             <intent-filter>
                 <action android:name="android.intent.action.RESPOND_VIA_MESSAGE" />
             </intent-filter>
