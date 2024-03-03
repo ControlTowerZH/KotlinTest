@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <!--注释1处-->
         <variable
             name="user"
             type="com.haohao.kotlintest.data.model.DataBindingUser" />
@@ -28,21 +27,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text='@{"姓名："+user.name}'
+            android:text='@{"name:"+user.name}'
             style="@style/testText" />
         <TextView
             android:id="@+id/tv_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text='@{"年龄："+user.age}'
+            android:text='@{"age:"+user.age}'
             style="@style/testText" />
         <TextView
             android:id="@+id/tv_num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
-            android:text='@{"编号 ："+user.num}'
+            android:text='@{"num:"+user.num}'
             style="@style/testText" />
     </LinearLayout>
 </layout>
